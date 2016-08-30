@@ -67,15 +67,7 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"qianqianquege" ofType:@"mp3"];
     self.player = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path] error:&error];
     [self.players addObject:self.player];
-    
-    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"yedegangqinqu" ofType:@"mp3"];
-    self.player1 = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path1] error:nil];
-    [self.players addObject:self.player1];
 
-    
-    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"ButterFly" ofType:@"mp3"];
-    self.player2 = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path2] error:nil];
-    [self.players addObject:self.player2];
 
     
     [self creatEqFliters];
@@ -210,6 +202,15 @@
         
         [self.audioController removeChannels:@[self.player]];
         
+        NSString *path1 = [[NSBundle mainBundle] pathForResource:@"yedegangqinqu" ofType:@"mp3"];
+        self.player1 = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path1] error:nil];
+        [self.players addObject:self.player1];
+        
+        
+        NSString *path2 = [[NSBundle mainBundle] pathForResource:@"ButterFly" ofType:@"mp3"];
+        self.player2 = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path2] error:nil];
+        [self.players addObject:self.player2];
+        
         [self.audioController addChannels:@[self.player, self.player1, self.player2]];
         [self.audioController start:nil];
         
@@ -245,8 +246,7 @@
 }
 
 - (void)sliderValueChange:(UISlider *)slider {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
+    
         CGFloat value = slider.value;
         NSLog(@"滑块：%lf",value);
         NSInteger eqType = 31;
@@ -290,25 +290,27 @@
                 break;
             }case 1010:{
                 
-//                self.player.volume = value;
-                for (AEAudioFilePlayer *player in self.players) {
-                    player.volume = value;
-                }
+                [self setVolume:value];
                 
+                break;
+            }case 1011:{
+                
+                [self setupEqFilter:_playbackRateFilter playbackRate:value];
+
                 break;
             }
         }
-        
-        if (slider.tag == 1011) {
-            
-            [self setupEqFilter:_playbackRateFilter playbackRate:value];
-            
-        }else {
+    
             
             [self setupFilterEq:eqType value:value];
-        }
         
-    });
+}
+
+- (void)setVolume:(float)value {
+ 
+    for (AEAudioFilePlayer *player in self.players) {
+        player.volume = value;
+    }
 }
 
 
