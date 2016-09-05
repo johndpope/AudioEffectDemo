@@ -20,6 +20,9 @@
 @property (nonatomic, strong) AEAudioFilePlayer *player1;
 @property (nonatomic, strong) AEAudioFilePlayer *player2;
 
+@property (nonatomic, strong) UIButton *progressButton;
+@property (nonatomic, strong) UISlider *pSlider;
+
 @property (nonatomic, strong) NSMutableArray *players;
 
 @property (nonatomic, strong) NSMutableArray *seliderArr;
@@ -67,8 +70,6 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"qianqianquege" ofType:@"mp3"];
     self.player = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path] error:&error];
     [self.players addObject:self.player];
-
-
     
     [self creatEqFliters];
     [self setSubViews];
@@ -99,13 +100,13 @@
     CGFloat margin = 40;
     for (int i = 0; i < 12; i++) {
         
-        UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(20, margin+45*i, CGRectGetWidth(self.view.frame)-100, 20)];
+        UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(20, margin+30*i, CGRectGetWidth(self.view.frame)-100, 20)];
         slider.tag = 1000 + i;
         slider.minimumValue = -5.0;
         slider.maximumValue = 5.0;
         slider.value = 0.0;
         
-        slider.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];;
+        slider.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
         
         if (i == 10) {
             
@@ -116,8 +117,8 @@
             
         }else if (i == 11) {
             
-            slider.minimumValue = 0.25;
-            slider.maximumValue = 4.0;
+            slider.minimumValue = 0.5;
+            slider.maximumValue = 2.0;
             slider.value = 1.0;
             [slider addTarget:self action:@selector(sliderValueChange:) forControlEvents:UIControlEventValueChanged];
             
@@ -144,20 +145,57 @@
         [self.view addSubview:lab];
     }
     
+    //进度条
+    UISlider *pSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, CGRectGetHeight(self.view.frame) - 100, CGRectGetWidth(self.view.frame)-20, 30)];
+    pSlider.minimumValue = 0.0;
+    pSlider.maximumValue = 0.0;
+    pSlider.value = 0.0;
+    pSlider.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
+    [pSlider addTarget:self action:@selector(pSliderValueChange:) forControlEvents:UIControlEventValueChanged];
+
+    [self.view addSubview:pSlider];
+    self.pSlider = pSlider;
+    
     //恢复默认
     
     
-    [self addButtnWithTitle:@"恢复默认" frame:CGRectMake(CGRectGetWidth(self.view.frame)/3*2+10, CGRectGetHeight(self.view.frame) - 50, CGRectGetWidth(self.view.frame)/3-20, 30) action:@selector(resetButtonAction:)];
+    [self addButtnWithTitle:@"" frame:CGRectMake(CGRectGetWidth(self.view.frame)/3*2+10, CGRectGetHeight(self.view.frame) - 50, CGRectGetWidth(self.view.frame)/3-20, 30) action:@selector(resetButtonAction:)];
     
     //混音
     
-    [self addButtnWithTitle:@"混音" frame:CGRectMake(CGRectGetWidth(self.view.frame)/3+10, CGRectGetHeight(self.view.frame) - 50, CGRectGetWidth(self.view.frame)/3-20, 30) action:@selector(audioMixing:)];
+    [self addButtnWithTitle:@"进度-3" frame:CGRectMake(CGRectGetWidth(self.view.frame)/3+10, CGRectGetHeight(self.view.frame) - 50, CGRectGetWidth(self.view.frame)/3-20, 30) action:@selector(audioMixing:)];
     
     //开始播放
     
     [self addButtnWithTitle:@"开始播放" frame:CGRectMake(10, CGRectGetHeight(self.view.frame) - 50, CGRectGetWidth(self.view.frame)/3-20, 30) action:@selector(startPlay:)];
     
+    [self.audioController addChannels:@[self.player]];
+    self.pSlider.maximumValue = self.player.duration;
+
+//    [self.player addObserver:self forKeyPath:@"currentTime" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(progress) userInfo:nil repeats:YES];
+    
+    [self.audioController stop];
 }
+
+- (void)progress {
+    
+        self.pSlider.value = self.player.currentTime;
+    [self.progressButton setTitle:[NSString stringWithFormat:@"%3.2d:%d", (int)self.player.currentTime, (int)self.player.duration] forState:UIControlStateNormal];
+}
+
+- (void)pSliderValueChange:(UISlider *)slider {
+    
+    self.player.currentTime = slider.value;
+}
+
+//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+//{
+//    if([keyPath isEqualToString:@"duration"]) {
+//        self.pSlider.value = self.player.currentTime;
+//    }
+//}
 
 - (void)addButtnWithTitle:(NSString *)title frame:(CGRect)frame action:(SEL)action {
     
@@ -174,10 +212,11 @@
     [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
-    [self.audioController addChannels:@[self.player]];
-    [self.audioController stop];
-    
+    if ([title isEqualToString:@""]) {
+        self.progressButton = button;
+    }
 }
+
 #pragma mark - 点击事件 & 均衡器改变事件
 
 - (void)startPlay:(UIButton *)sender {
@@ -193,55 +232,63 @@
         [self.audioController start:nil];
     }
     
+    
     self.isPlay = !self.isPlay;
 }
 
 - (void)audioMixing:(UIButton *)sender {
     
-    if (!_isAudioMix) {
-        
-        [self.audioController removeChannels:@[self.player]];
-        
-        NSString *path1 = [[NSBundle mainBundle] pathForResource:@"yedegangqinqu" ofType:@"mp3"];
-        self.player1 = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path1] error:nil];
-        [self.players addObject:self.player1];
-        
-        
-        NSString *path2 = [[NSBundle mainBundle] pathForResource:@"ButterFly" ofType:@"mp3"];
-        self.player2 = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path2] error:nil];
-        [self.players addObject:self.player2];
-        
-        [self.audioController addChannels:@[self.player, self.player1, self.player2]];
-        [self.audioController start:nil];
-        
-        _isAudioMix = YES;
-    }else {
-        
-        if (self.isPlay) {
-            
-            [self.audioController stop];
-            
-        }else {
-            
-            [self.audioController start:nil];
-        }
-        
-        self.isPlay = !self.isPlay;
+    
+//    
+//    if (!_isAudioMix) {
+//        
+//        [self.audioController removeChannels:@[self.player]];
+//        
+//        NSString *path1 = [[NSBundle mainBundle] pathForResource:@"yedegangqinqu" ofType:@"mp3"];
+//        self.player1 = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path1] error:nil];
+//        [self.players addObject:self.player1];
+//        
+//        
+//        NSString *path2 = [[NSBundle mainBundle] pathForResource:@"ButterFly" ofType:@"mp3"];
+//        self.player2 = [[AEAudioFilePlayer alloc] initWithURL:[NSURL fileURLWithPath:path2] error:nil];
+//        [self.players addObject:self.player2];
+//        
+//        [self.audioController addChannels:@[self.player, self.player1, self.player2]];
+//        [self.audioController start:nil];
+//        
+//        _isAudioMix = YES;
+//    }else {
+//        
+//        if (self.isPlay) {
+//            
+//            [self.audioController stop];
+//            
+//        }else {
+//            
+//            [self.audioController start:nil];
+//        }
+//        
+//        self.isPlay = !self.isPlay;
+//    }
+//    
+    
+    if (self.player.currentTime > 3) {
+        self.player.currentTime -= 3;
+
     }
-    
-    
-    
 }
 
 
 - (void)resetButtonAction:(UIButton *)sender {
     
-    for (int i = 0; i < self.seliderArr.count; i++) {
-        UISlider *slider = self.seliderArr[i];
-        slider.value = [self.seliderValueArr[i] floatValue];
-        NSLog(@"%f", slider.value);
-        [self sliderValueChange:slider];
-    }
+//    for (int i = 0; i < self.seliderArr.count; i++) {
+//        UISlider *slider = self.seliderArr[i];
+//        slider.value = [self.seliderValueArr[i] floatValue];
+//        NSLog(@"%f", slider.value);
+//        [self sliderValueChange:slider];
+//    }
+    
+    [sender setTitle:[NSString stringWithFormat:@"进度：%2d", (int)self.player.currentTime] forState:UIControlStateNormal];
     
 }
 
@@ -290,14 +337,14 @@
                 break;
             }case 1010:{
                 
-                [self setVolume:value];
+                self.player.volume = value;
                 
-                break;
+                return;
             }case 1011:{
                 
                 [self setupEqFilter:_playbackRateFilter playbackRate:value];
 
-                break;
+                return;
             }
         }
     
@@ -312,6 +359,7 @@
         player.volume = value;
     }
 }
+
 
 
 //改变音效
@@ -398,5 +446,8 @@
     });
 }
 
+- (void)dealloc {
+    [self.player removeObserver:self forKeyPath:@"duration"];
+}
 
 @end
