@@ -57,6 +57,7 @@ static const int kInputChannelsChangedContext;
         BOOL foundSound = NO;
         int x = 0;
         for (NSString *extension in extensions) {
+                uint64_t now = AECurrentTimeInHostTicks() + AEHostTicksFromSeconds(2);
             paths = [[NSBundle mainBundle] pathsForResourcesOfType:extension inDirectory:nil];
             if ([paths count]) {
                 for (NSString *path in paths) {
@@ -65,6 +66,7 @@ static const int kInputChannelsChangedContext;
                     loop.volume = 1.0;
                     loop.channelIsMuted = YES;
                     loop.loop = YES;
+                    [loop playAtTime:now];
                     [loops addObject:loop];
                     x++;
                     foundSound = YES;
@@ -508,7 +510,9 @@ static const int kInputChannelsChangedContext;
 }
 
 - (void)stopAllLoops {
+    uint64_t now = AECurrentTimeInHostTicks() + AEHostTicksFromSeconds(2);
     for (AEAudioFilePlayer *loop in loops) {
+        [loop playAtTime:now];
         [loop setCurrentTime:0];
     }
 }
