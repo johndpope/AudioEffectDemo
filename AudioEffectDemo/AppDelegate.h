@@ -1,17 +1,11 @@
-//
-//  AppDelegate.h
-//  AudioEffectDemo
-//
-//  Created by 李银涛 on 16/8/30.
-//  Copyright © 2016年 李银涛. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
+@class ViewController;
+@class AEAudioController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-
+@property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) AEAudioController *audioController;
 @end
-

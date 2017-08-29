@@ -1,12 +1,42 @@
 PODS:
-  - TheAmazingAudioEngine (1.5.6)
+  - AnyMesh (0.3.0)
+  - BlocksKit (2.2.3):
+    - BlocksKit/All (= 2.2.3)
+  - BlocksKit/All (2.2.3):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.3)
+  - BlocksKit/DynamicDelegate (2.2.3)
+  - BlocksKit/MessageUI (2.2.3):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.3):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - TheAmazingAudioEngine (1.6.0)
 
 DEPENDENCIES:
-  - TheAmazingAudioEngine
+  - AnyMesh (= 0.3.0)
+  - BlocksKit (= 2.2.3)
+  - TheAmazingAudioEngine (from `https://github.com/johndpope/TheAmazingAudioEngine.git`, tag `1.6.0`)
+
+EXTERNAL SOURCES:
+  TheAmazingAudioEngine:
+    :git: https://github.com/johndpope/TheAmazingAudioEngine.git
+    :tag: 1.6.0
+
+CHECKOUT OPTIONS:
+  TheAmazingAudioEngine:
+    :git: https://github.com/johndpope/TheAmazingAudioEngine.git
+    :tag: 1.6.0
 
 SPEC CHECKSUMS:
-  TheAmazingAudioEngine: 0ed8c05486646373a48b22a341d31de42d1af2c3
+  AnyMesh: 17871ef06b988e20a89f8242165f201f150b1ccd
+  BlocksKit: db63805ebfcc217c198532a900838bffdb400239
+  TheAmazingAudioEngine: 79473952247a1dd14ab9d2176eeb9fe5f4357efa
 
-PODFILE CHECKSUM: 2e8d5f71899b33fe65b7b8c69dffda17a3dadf27
+PODFILE CHECKSUM: 4cd6ef86350b76a772d6a567974aaa40912a952a
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.3.1

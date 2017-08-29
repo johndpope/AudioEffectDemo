@@ -7,19 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17A61FA21F55F2CF007DD398 /* 87035_1332467-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */; };
+		17A61FA31F55F2CF007DD398 /* 123094_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */; };
+		17A61FA41F55F2CF007DD398 /* 123096_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */; };
+		17A61FA51F55F2CF007DD398 /* 123104_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9F1F55F2CF007DD398 /* 123104_103319-lq.mp3 */; };
+		17A61FA61F55F2CF007DD398 /* 123108_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61FA01F55F2CF007DD398 /* 123108_103319-lq.mp3 */; };
+		17A61FA71F55F2CF007DD398 /* 123111_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61FA11F55F2CF007DD398 /* 123111_103319-lq.mp3 */; };
+		17A61FF91F55F46D007DD398 /* TPOscilloscopeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A61FF81F55F46D007DD398 /* TPOscilloscopeLayer.m */; };
 		3DDECA7008CA437064E2FDA4 /* libPods-AudioEffectDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE77E4809CAFCC42793887 /* libPods-AudioEffectDemo.a */; };
 		E868644F1D75B5E400DE35C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E868644E1D75B5E400DE35C6 /* main.m */; };
 		E86864521D75B5E400DE35C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E86864511D75B5E400DE35C6 /* AppDelegate.m */; };
 		E86864551D75B5E400DE35C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E86864541D75B5E400DE35C6 /* ViewController.m */; };
-		E86864581D75B5E400DE35C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86864561D75B5E400DE35C6 /* Main.storyboard */; };
 		E868645A1D75B5E400DE35C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E86864591D75B5E400DE35C6 /* Assets.xcassets */; };
 		E868645D1D75B5E400DE35C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E868645B1D75B5E400DE35C6 /* LaunchScreen.storyboard */; };
-		E86864AC1D75CCFB00DE35C6 /* qianqianquege.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E86864AB1D75CCFB00DE35C6 /* qianqianquege.mp3 */; };
-		E86864AE1D75E0D600DE35C6 /* yedegangqinqu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E86864AD1D75E0D600DE35C6 /* yedegangqinqu.mp3 */; };
-		E86864B01D75ECDE00DE35C6 /* ButterFly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E86864AF1D75ECDE00DE35C6 /* ButterFly.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "87035_1332467-lq.mp3"; sourceTree = "<group>"; };
+		17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123094_103319-lq.mp3"; sourceTree = "<group>"; };
+		17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123096_103319-lq.mp3"; sourceTree = "<group>"; };
+		17A61F9F1F55F2CF007DD398 /* 123104_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123104_103319-lq.mp3"; sourceTree = "<group>"; };
+		17A61FA01F55F2CF007DD398 /* 123108_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123108_103319-lq.mp3"; sourceTree = "<group>"; };
+		17A61FA11F55F2CF007DD398 /* 123111_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123111_103319-lq.mp3"; sourceTree = "<group>"; };
+		17A61FF71F55F46D007DD398 /* TPOscilloscopeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPOscilloscopeLayer.h; sourceTree = "<group>"; };
+		17A61FF81F55F46D007DD398 /* TPOscilloscopeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPOscilloscopeLayer.m; sourceTree = "<group>"; };
 		83EE77E4809CAFCC42793887 /* libPods-AudioEffectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AudioEffectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC88AE456125B7127EE6EAC2 /* Pods-AudioEffectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioEffectDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioEffectDemo/Pods-AudioEffectDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D448C28DFA18801B5ADD416C /* Pods-AudioEffectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioEffectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioEffectDemo/Pods-AudioEffectDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -29,13 +40,9 @@
 		E86864511D75B5E400DE35C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E86864531D75B5E400DE35C6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E86864541D75B5E400DE35C6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E86864571D75B5E400DE35C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E86864591D75B5E400DE35C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E868645C1D75B5E400DE35C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E868645E1D75B5E400DE35C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E86864AB1D75CCFB00DE35C6 /* qianqianquege.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = qianqianquege.mp3; sourceTree = "<group>"; };
-		E86864AD1D75E0D600DE35C6 /* yedegangqinqu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yedegangqinqu.mp3; sourceTree = "<group>"; };
-		E86864AF1D75ECDE00DE35C6 /* ButterFly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButterFly.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,11 +95,12 @@
 		E868644C1D75B5E400DE35C6 /* AudioEffectDemo */ = {
 			isa = PBXGroup;
 			children = (
+				17A61FF71F55F46D007DD398 /* TPOscilloscopeLayer.h */,
+				17A61FF81F55F46D007DD398 /* TPOscilloscopeLayer.m */,
 				E86864501D75B5E400DE35C6 /* AppDelegate.h */,
 				E86864511D75B5E400DE35C6 /* AppDelegate.m */,
 				E86864531D75B5E400DE35C6 /* ViewController.h */,
 				E86864541D75B5E400DE35C6 /* ViewController.m */,
-				E86864561D75B5E400DE35C6 /* Main.storyboard */,
 				E86864591D75B5E400DE35C6 /* Assets.xcassets */,
 				E868645B1D75B5E400DE35C6 /* LaunchScreen.storyboard */,
 				E868645E1D75B5E400DE35C6 /* Info.plist */,
@@ -104,9 +112,12 @@
 		E868644D1D75B5E400DE35C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E86864AB1D75CCFB00DE35C6 /* qianqianquege.mp3 */,
-				E86864AD1D75E0D600DE35C6 /* yedegangqinqu.mp3 */,
-				E86864AF1D75ECDE00DE35C6 /* ButterFly.mp3 */,
+				17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */,
+				17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */,
+				17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */,
+				17A61F9F1F55F2CF007DD398 /* 123104_103319-lq.mp3 */,
+				17A61FA01F55F2CF007DD398 /* 123108_103319-lq.mp3 */,
+				17A61FA11F55F2CF007DD398 /* 123111_103319-lq.mp3 */,
 				E868644E1D75B5E400DE35C6 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -119,12 +130,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E86864611D75B5E400DE35C6 /* Build configuration list for PBXNativeTarget "AudioEffectDemo" */;
 			buildPhases = (
-				81E9B651E453EE54A840D52B /* 📦 Check Pods Manifest.lock */,
+				81E9B651E453EE54A840D52B /* [CP] Check Pods Manifest.lock */,
 				E86864461D75B5E400DE35C6 /* Sources */,
 				E86864471D75B5E400DE35C6 /* Frameworks */,
 				E86864481D75B5E400DE35C6 /* Resources */,
-				D7B26BF0440E47AE5DF99FBA /* 📦 Embed Pods Frameworks */,
-				468523562A14D7F73AC9AF3A /* 📦 Copy Pods Resources */,
+				D7B26BF0440E47AE5DF99FBA /* [CP] Embed Pods Frameworks */,
+				468523562A14D7F73AC9AF3A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,7 +157,7 @@
 				TargetAttributes = {
 					E86864491D75B5E400DE35C6 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = NP9654B84F;
+						DevelopmentTeam = KL43C67G5Z;
 					};
 				};
 			};
@@ -173,26 +184,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A61FA21F55F2CF007DD398 /* 87035_1332467-lq.mp3 in Resources */,
 				E868645D1D75B5E400DE35C6 /* LaunchScreen.storyboard in Resources */,
+				17A61FA71F55F2CF007DD398 /* 123111_103319-lq.mp3 in Resources */,
+				17A61FA31F55F2CF007DD398 /* 123094_103319-lq.mp3 in Resources */,
+				17A61FA61F55F2CF007DD398 /* 123108_103319-lq.mp3 in Resources */,
 				E868645A1D75B5E400DE35C6 /* Assets.xcassets in Resources */,
-				E86864581D75B5E400DE35C6 /* Main.storyboard in Resources */,
-				E86864AC1D75CCFB00DE35C6 /* qianqianquege.mp3 in Resources */,
-				E86864B01D75ECDE00DE35C6 /* ButterFly.mp3 in Resources */,
-				E86864AE1D75E0D600DE35C6 /* yedegangqinqu.mp3 in Resources */,
+				17A61FA51F55F2CF007DD398 /* 123104_103319-lq.mp3 in Resources */,
+				17A61FA41F55F2CF007DD398 /* 123096_103319-lq.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		468523562A14D7F73AC9AF3A /* 📦 Copy Pods Resources */ = {
+		468523562A14D7F73AC9AF3A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,29 +213,32 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioEffectDemo/Pods-AudioEffectDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		81E9B651E453EE54A840D52B /* 📦 Check Pods Manifest.lock */ = {
+		81E9B651E453EE54A840D52B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudioEffectDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D7B26BF0440E47AE5DF99FBA /* 📦 Embed Pods Frameworks */ = {
+		D7B26BF0440E47AE5DF99FBA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A61FF91F55F46D007DD398 /* TPOscilloscopeLayer.m in Sources */,
 				E86864551D75B5E400DE35C6 /* ViewController.m in Sources */,
 				E86864521D75B5E400DE35C6 /* AppDelegate.m in Sources */,
 				E868644F1D75B5E400DE35C6 /* main.m in Sources */,
@@ -246,14 +263,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E86864561D75B5E400DE35C6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E86864571D75B5E400DE35C6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E868645B1D75B5E400DE35C6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -356,6 +365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KL43C67G5Z;
 				INFOPLIST_FILE = AudioEffectDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liyintao.iron.AudioEffectDemo;
@@ -371,6 +381,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KL43C67G5Z;
 				INFOPLIST_FILE = AudioEffectDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liyintao.iron.AudioEffectDemo;
