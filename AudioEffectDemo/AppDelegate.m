@@ -10,12 +10,14 @@
 #import "ViewController.h"
 #import "TheAmazingAudioEngine.h"
 
+@import DotzuObjc;
+@import Dotzu;
+
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize audioController = _audioController;
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -34,6 +36,9 @@
     self.viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self.viewController action:@selector(stopAllLoops)];
     self.window.rootViewController = self.nc;
     [self.window makeKeyAndVisible];
+    
+  
+    [[Dotzu sharedManager] enable];
     
     return YES;
 }

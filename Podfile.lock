@@ -15,11 +15,15 @@ PODS:
   - BlocksKit/UIKit (2.2.3):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - Dotzu (1.8)
+  - DotzuObjc (1.8):
+    - Dotzu (~> 1.8)
   - TheAmazingAudioEngine (1.6.0)
 
 DEPENDENCIES:
   - AnyMesh (= 0.3.0)
   - BlocksKit (= 2.2.3)
+  - DotzuObjc
   - TheAmazingAudioEngine (from `https://github.com/johndpope/TheAmazingAudioEngine.git`, tag `1.6.0`)
 
 EXTERNAL SOURCES:
@@ -35,8 +39,10 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AnyMesh: 17871ef06b988e20a89f8242165f201f150b1ccd
   BlocksKit: db63805ebfcc217c198532a900838bffdb400239
+  Dotzu: e787896f08474f4e4574baa20ec556361dfebf0c
+  DotzuObjc: b6747c7ca2bab7bd36fd62698d7d6a32d1f25de8
   TheAmazingAudioEngine: 79473952247a1dd14ab9d2176eeb9fe5f4357efa
 
-PODFILE CHECKSUM: 4cd6ef86350b76a772d6a567974aaa40912a952a
+PODFILE CHECKSUM: 6860c1637105def6f8b4462e028f63450d4bde52
 
 COCOAPODS: 1.3.1

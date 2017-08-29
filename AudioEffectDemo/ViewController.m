@@ -1,5 +1,4 @@
 #import "ViewController.h"
-#import <TheAmazingAudioEngine.h>
 #import "TPOscilloscopeLayer.h"
 #import "AEPlaythroughChannel.h"
 #import "AEExpanderFilter.h"
@@ -9,7 +8,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <BlocksKit/UIControl+BlocksKit.h>
 #import <BlocksKit/BlocksKit.h>
-
+@import DotzuObjc;
+@import TheAmazingAudioEngine;
 
 static const int kInputChannelsChangedContext;
 
@@ -75,7 +75,7 @@ static const int kInputChannelsChangedContext;
             }
         }
         if (!foundSound) {
-            NSLog(@"SoundManager prepareToPlay failed to find sound in application bundle. Use prepareToPlayWithSound: instead to specify a suitable sound file.");
+            LogInfo(@"SoundManager prepareToPlay failed to find sound in application bundle. Use prepareToPlayWithSound: instead to specify a suitable sound file.");
         }
     }
 }
@@ -94,7 +94,7 @@ static const int kInputChannelsChangedContext;
     MeshDeviceInfo *dInfo = [[MeshDeviceInfo alloc] init];
     NSString *uuid = [self getUUID];
     dInfo.name = uuid;
-    //  NSLog(@"uuid:%@", uuid);
+    //  LogInfo(@"uuid:%@", uuid);
     dInfo.subscriptions =  [NSMutableArray array];
     [anymesh connectWithName:dInfo.name subscriptions:dInfo.subscriptions];
     
@@ -497,15 +497,16 @@ static const int kInputChannelsChangedContext;
 
 
 - (void)startBroadcastToPeers {
-    //    [self stopBroadcastToPeers];
-    NSLog(@"requestToTarget");
+
+    LogInfo(@"requestToTarget");
+    uint64_t now = AECurrentTimeInHostTicks();
     for (NSString *peer in peers) {
-        [anymesh requestToTarget:peer withData:@{ @"msg":@"start" }];
+        [anymesh requestToTarget:peer withData:@{ @"msg":@"start",@"uuid":[self getUUID],@"hostTime":[NSString stringWithFormat:@"%llu",now] }];
     }
     
-    NSLog(@"publishToTarget");
+    LogInfo(@"publishToTarget");
     for (NSString *peer in peers) {
-        [anymesh publishToTarget:peer withData:@{ @"msg":@"start" }];
+         [anymesh requestToTarget:peer withData:@{ @"msg":@"start",@"uuid":[self getUUID],@"hostTime":[NSString stringWithFormat:@"%llu",now] }];
     }
 }
 
@@ -517,26 +518,56 @@ static const int kInputChannelsChangedContext;
     }
 }
 
+#pragma mark - AnyMesh Delegate Methods
+- (void)anyMesh:(AnyMesh *)anyMesh connectedTo:(MeshDeviceInfo *)device {
+    LogInfo(@"connectedTo:%@", device);
+    [peers addObject:device.name];
+}
+
+- (void)anyMesh:(AnyMesh *)anyMesh disconnectedFrom:(NSString *)name {
+    LogWarning(@"disconnectedFrom:%@", name);
+    [peers removeObject:name];
+}
+
+- (void)anyMesh:(AnyMesh *)anyMesh receivedMessage:(MeshMessage *)message {
+    LogInfo(@"receivedMessage:%@", message.data[@"msg"]);
+    
+    NSString *url = message.data[@"url"];
+    NSString *filename = [url lastPathComponent];
+    for (AEAudioFilePlayer *loop in loops) {
+        if ([[loop.url.absoluteString lastPathComponent] isEqualToString:filename]) {
+            loop.channelIsMuted = YES;
+            //  [loop setCurrentTime:0];
+        }
+    }
+    
+    if ([message.data[@"msg"] isEqualToString:@"stop"]) {
+        [self stopAllLoops];
+    }
+    
+    [self.tableView reloadData];
+}
+
 - (void)stopBroadcastToPeers {
     [self stopAllLoops];
-    NSLog(@"requestToTarget");
+    LogInfo(@"requestToTarget");
     for (NSString *peer in peers) {
         [anymesh requestToTarget:peer withData:@{ @"msg":@"stop" }];
     }
     
-    NSLog(@"publishToTarget");
+    LogInfo(@"publishToTarget");
     for (NSString *peer in peers) {
         [anymesh publishToTarget:peer withData:@{ @"msg":@"stop" }];
     }
 }
 
 - (void)broadcastToPeers:(AEAudioFilePlayer *)loop sender:(UIControl *)sender {
-    NSLog(@"requestToTarget");
+    LogInfo(@"requestToTarget");
     for (NSString *peer in peers) {
         [anymesh requestToTarget:peer withData:@{ @"url":loop.url.absoluteString, @"msg":@"none" }];
     }
     
-    NSLog(@"publishToTarget");
+    LogInfo(@"publishToTarget");
     for (NSString *peer in peers) {
         [anymesh publishToTarget:peer withData:@{ @"url":loop.url.absoluteString, @"msg":@"none" }];
     }

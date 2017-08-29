@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		177630361F560CF7002FB1F3 /* Strings (Middle).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6201F1F55FB54007DD398 /* Strings (Middle).caf */; };
+		177630371F560CF7002FB1F3 /* Finger Snaps, Vocal Bits.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620201F55FB54007DD398 /* Finger Snaps, Vocal Bits.caf */; };
+		177630381F560CF7002FB1F3 /* Vibes.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620211F55FB54007DD398 /* Vibes.caf */; };
+		177630391F560CF7002FB1F3 /* Piano.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620221F55FB54007DD398 /* Piano.caf */; };
+		1776303A1F560CF7002FB1F3 /* Lead Vocals 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620231F55FB54007DD398 /* Lead Vocals 1.caf */; };
+		1776303B1F560CF7002FB1F3 /* Lead Vocals 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620241F55FB54007DD398 /* Lead Vocals 2.caf */; };
+		1776303C1F560CF7002FB1F3 /* Background Vocals.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620251F55FB54007DD398 /* Background Vocals.caf */; };
+		1776303D1F560CF7002FB1F3 /* Saxophone.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620261F55FB54007DD398 /* Saxophone.caf */; };
+		1776303E1F560CF7002FB1F3 /* Strings (Right Channel).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620271F55FB54007DD398 /* Strings (Right Channel).caf */; };
+		1776303F1F560CF7002FB1F3 /* Drum Kit 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620281F55FB54007DD398 /* Drum Kit 2.caf */; };
+		177630401F560CF7002FB1F3 /* Strings (Left Channel).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620291F55FB54007DD398 /* Strings (Left Channel).caf */; };
+		177630411F560CF7002FB1F3 /* Drum Kit 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202A1F55FB54007DD398 /* Drum Kit 1.caf */; };
+		177630421F560CF7002FB1F3 /* text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202B1F55FB54007DD398 /* text.txt */; };
+		177630431F560CF7002FB1F3 /* Percussion.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202C1F55FB54007DD398 /* Percussion.caf */; };
+		177630441F560CF7002FB1F3 /* Bass.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202D1F55FB54007DD398 /* Bass.caf */; };
+		177630451F560CF7002FB1F3 /* Guitar 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202E1F55FB54007DD398 /* Guitar 1.caf */; };
+		177630461F560CF7002FB1F3 /* Guitar 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202F1F55FB54007DD398 /* Guitar 2.caf */; };
 		17A61FA21F55F2CF007DD398 /* 87035_1332467-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */; };
 		17A61FA31F55F2CF007DD398 /* 123094_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */; };
 		17A61FA41F55F2CF007DD398 /* 123096_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */; };
@@ -15,24 +32,7 @@
 		17A61FA71F55F2CF007DD398 /* 123111_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61FA11F55F2CF007DD398 /* 123111_103319-lq.mp3 */; };
 		17A61FF91F55F46D007DD398 /* TPOscilloscopeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A61FF81F55F46D007DD398 /* TPOscilloscopeLayer.m */; };
 		17A61FFC1F55F5B0007DD398 /* CellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A61FFB1F55F5B0007DD398 /* CellData.m */; };
-		17A620301F55FB54007DD398 /* Strings (Middle).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6201F1F55FB54007DD398 /* Strings (Middle).caf */; };
-		17A620311F55FB54007DD398 /* Finger Snaps, Vocal Bits.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620201F55FB54007DD398 /* Finger Snaps, Vocal Bits.caf */; };
-		17A620321F55FB54007DD398 /* Vibes.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620211F55FB54007DD398 /* Vibes.caf */; };
-		17A620331F55FB54007DD398 /* Piano.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620221F55FB54007DD398 /* Piano.caf */; };
-		17A620341F55FB54007DD398 /* Lead Vocals 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620231F55FB54007DD398 /* Lead Vocals 1.caf */; };
-		17A620351F55FB54007DD398 /* Lead Vocals 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620241F55FB54007DD398 /* Lead Vocals 2.caf */; };
-		17A620361F55FB54007DD398 /* Background Vocals.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620251F55FB54007DD398 /* Background Vocals.caf */; };
-		17A620371F55FB54007DD398 /* Saxophone.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620261F55FB54007DD398 /* Saxophone.caf */; };
-		17A620381F55FB54007DD398 /* Strings (Right Channel).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620271F55FB54007DD398 /* Strings (Right Channel).caf */; };
-		17A620391F55FB54007DD398 /* Drum Kit 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620281F55FB54007DD398 /* Drum Kit 2.caf */; };
-		17A6203A1F55FB54007DD398 /* Strings (Left Channel).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620291F55FB54007DD398 /* Strings (Left Channel).caf */; };
-		17A6203B1F55FB54007DD398 /* Drum Kit 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202A1F55FB54007DD398 /* Drum Kit 1.caf */; };
-		17A6203C1F55FB54007DD398 /* text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202B1F55FB54007DD398 /* text.txt */; };
-		17A6203D1F55FB54007DD398 /* Percussion.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202C1F55FB54007DD398 /* Percussion.caf */; };
-		17A6203E1F55FB54007DD398 /* Bass.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202D1F55FB54007DD398 /* Bass.caf */; };
-		17A6203F1F55FB54007DD398 /* Guitar 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202E1F55FB54007DD398 /* Guitar 1.caf */; };
-		17A620401F55FB54007DD398 /* Guitar 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202F1F55FB54007DD398 /* Guitar 2.caf */; };
-		3DDECA7008CA437064E2FDA4 /* libPods-AudioEffectDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE77E4809CAFCC42793887 /* libPods-AudioEffectDemo.a */; };
+		3C889E250F4EE4BCA7FCA90C /* Pods_AudioEffectDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC211C6491CFD1DA1F9FD60 /* Pods_AudioEffectDemo.framework */; };
 		E868644F1D75B5E400DE35C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E868644E1D75B5E400DE35C6 /* main.m */; };
 		E86864521D75B5E400DE35C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E86864511D75B5E400DE35C6 /* AppDelegate.m */; };
 		E86864551D75B5E400DE35C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E86864541D75B5E400DE35C6 /* ViewController.m */; };
@@ -68,7 +68,22 @@
 		17A6202D1F55FB54007DD398 /* Bass.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bass.caf; sourceTree = "<group>"; };
 		17A6202E1F55FB54007DD398 /* Guitar 1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Guitar 1.caf"; sourceTree = "<group>"; };
 		17A6202F1F55FB54007DD398 /* Guitar 2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Guitar 2.caf"; sourceTree = "<group>"; };
-		83EE77E4809CAFCC42793887 /* libPods-AudioEffectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AudioEffectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17A620421F560454007DD398 /* Drumz2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drumz2.wav; sourceTree = "<group>"; };
+		17A620431F560454007DD398 /* Snare room.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Snare room.wav"; sourceTree = "<group>"; };
+		17A620441F560454007DD398 /* Background Room.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Background Room.wav"; sourceTree = "<group>"; };
+		17A620451F560454007DD398 /* Background with guitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Background with guitar.wav"; sourceTree = "<group>"; };
+		17A620461F560454007DD398 /* Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Kick.wav; sourceTree = "<group>"; };
+		17A620471F560454007DD398 /* Background overhead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Background overhead.wav"; sourceTree = "<group>"; };
+		17A620481F560454007DD398 /* Drumz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drumz.wav; sourceTree = "<group>"; };
+		17A620491F560454007DD398 /* Kick L.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Kick L.wav"; sourceTree = "<group>"; };
+		17A6204A1F560454007DD398 /* Snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Snare.wav; sourceTree = "<group>"; };
+		17A6204B1F560454007DD398 /* Background vocal with Guitar 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Background vocal with Guitar 2.wav"; sourceTree = "<group>"; };
+		17A6204C1F560454007DD398 /* Guitar 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Guitar 1.wav"; sourceTree = "<group>"; };
+		17A6204D1F560454007DD398 /* Lead Vocal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Lead Vocal.wav"; sourceTree = "<group>"; };
+		17A6204E1F560454007DD398 /* Guitar 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Guitar 2.wav"; sourceTree = "<group>"; };
+		17A6204F1F560454007DD398 /* Lead Vocal 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Lead Vocal 2.wav"; sourceTree = "<group>"; };
+		17A620501F560454007DD398 /* Bass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bass.wav; sourceTree = "<group>"; };
+		7AC211C6491CFD1DA1F9FD60 /* Pods_AudioEffectDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioEffectDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC88AE456125B7127EE6EAC2 /* Pods-AudioEffectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioEffectDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioEffectDemo/Pods-AudioEffectDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D448C28DFA18801B5ADD416C /* Pods-AudioEffectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioEffectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioEffectDemo/Pods-AudioEffectDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E868644A1D75B5E400DE35C6 /* AudioEffectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioEffectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DDECA7008CA437064E2FDA4 /* libPods-AudioEffectDemo.a in Frameworks */,
+				3C889E250F4EE4BCA7FCA90C /* Pods_AudioEffectDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +112,7 @@
 		0213C568781B977E82096C0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				83EE77E4809CAFCC42793887 /* libPods-AudioEffectDemo.a */,
+				7AC211C6491CFD1DA1F9FD60 /* Pods_AudioEffectDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,6 +139,29 @@
 				17A6202F1F55FB54007DD398 /* Guitar 2.caf */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		17A620411F560454007DD398 /* Red Hot Chilli Peppers DANI CALIFORNIA [MULTITRACKS] */ = {
+			isa = PBXGroup;
+			children = (
+				17A620421F560454007DD398 /* Drumz2.wav */,
+				17A620431F560454007DD398 /* Snare room.wav */,
+				17A620441F560454007DD398 /* Background Room.wav */,
+				17A620451F560454007DD398 /* Background with guitar.wav */,
+				17A620461F560454007DD398 /* Kick.wav */,
+				17A620471F560454007DD398 /* Background overhead.wav */,
+				17A620481F560454007DD398 /* Drumz.wav */,
+				17A620491F560454007DD398 /* Kick L.wav */,
+				17A6204A1F560454007DD398 /* Snare.wav */,
+				17A6204B1F560454007DD398 /* Background vocal with Guitar 2.wav */,
+				17A6204C1F560454007DD398 /* Guitar 1.wav */,
+				17A6204D1F560454007DD398 /* Lead Vocal.wav */,
+				17A6204E1F560454007DD398 /* Guitar 2.wav */,
+				17A6204F1F560454007DD398 /* Lead Vocal 2.wav */,
+				17A620501F560454007DD398 /* Bass.wav */,
+			);
+			name = "Red Hot Chilli Peppers DANI CALIFORNIA [MULTITRACKS]";
+			path = "../../../Desktop/Red Hot Chilli Peppers DANI CALIFORNIA [MULTITRACKS]";
 			sourceTree = "<group>";
 		};
 		57A53699A1C74BD76D2E96EC /* Pods */ = {
@@ -156,6 +194,7 @@
 		E868644C1D75B5E400DE35C6 /* AudioEffectDemo */ = {
 			isa = PBXGroup;
 			children = (
+				17A620411F560454007DD398 /* Red Hot Chilli Peppers DANI CALIFORNIA [MULTITRACKS] */,
 				17A6201E1F55FB54007DD398 /* Sounds */,
 				17A61FFA1F55F5B0007DD398 /* CellData.h */,
 				17A61FFB1F55F5B0007DD398 /* CellData.m */,
@@ -248,31 +287,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17A620331F55FB54007DD398 /* Piano.caf in Resources */,
+				1776303B1F560CF7002FB1F3 /* Lead Vocals 2.caf in Resources */,
+				1776303F1F560CF7002FB1F3 /* Drum Kit 2.caf in Resources */,
+				1776303D1F560CF7002FB1F3 /* Saxophone.caf in Resources */,
 				17A61FA21F55F2CF007DD398 /* 87035_1332467-lq.mp3 in Resources */,
 				E868645D1D75B5E400DE35C6 /* LaunchScreen.storyboard in Resources */,
+				1776303E1F560CF7002FB1F3 /* Strings (Right Channel).caf in Resources */,
+				177630441F560CF7002FB1F3 /* Bass.caf in Resources */,
+				177630431F560CF7002FB1F3 /* Percussion.caf in Resources */,
+				177630421F560CF7002FB1F3 /* text.txt in Resources */,
 				17A61FA71F55F2CF007DD398 /* 123111_103319-lq.mp3 in Resources */,
-				17A620341F55FB54007DD398 /* Lead Vocals 1.caf in Resources */,
-				17A620351F55FB54007DD398 /* Lead Vocals 2.caf in Resources */,
+				177630371F560CF7002FB1F3 /* Finger Snaps, Vocal Bits.caf in Resources */,
+				1776303C1F560CF7002FB1F3 /* Background Vocals.caf in Resources */,
+				177630361F560CF7002FB1F3 /* Strings (Middle).caf in Resources */,
 				17A61FA31F55F2CF007DD398 /* 123094_103319-lq.mp3 in Resources */,
-				17A6203C1F55FB54007DD398 /* text.txt in Resources */,
-				17A6203B1F55FB54007DD398 /* Drum Kit 1.caf in Resources */,
-				17A620361F55FB54007DD398 /* Background Vocals.caf in Resources */,
-				17A6203E1F55FB54007DD398 /* Bass.caf in Resources */,
+				177630401F560CF7002FB1F3 /* Strings (Left Channel).caf in Resources */,
+				177630391F560CF7002FB1F3 /* Piano.caf in Resources */,
 				17A61FA61F55F2CF007DD398 /* 123108_103319-lq.mp3 in Resources */,
-				17A620311F55FB54007DD398 /* Finger Snaps, Vocal Bits.caf in Resources */,
-				17A620391F55FB54007DD398 /* Drum Kit 2.caf in Resources */,
-				17A6203D1F55FB54007DD398 /* Percussion.caf in Resources */,
-				17A620371F55FB54007DD398 /* Saxophone.caf in Resources */,
+				1776303A1F560CF7002FB1F3 /* Lead Vocals 1.caf in Resources */,
 				E868645A1D75B5E400DE35C6 /* Assets.xcassets in Resources */,
-				17A6203F1F55FB54007DD398 /* Guitar 1.caf in Resources */,
-				17A620301F55FB54007DD398 /* Strings (Middle).caf in Resources */,
-				17A620321F55FB54007DD398 /* Vibes.caf in Resources */,
-				17A6203A1F55FB54007DD398 /* Strings (Left Channel).caf in Resources */,
+				177630411F560CF7002FB1F3 /* Drum Kit 1.caf in Resources */,
+				177630381F560CF7002FB1F3 /* Vibes.caf in Resources */,
+				177630461F560CF7002FB1F3 /* Guitar 2.caf in Resources */,
 				17A61FA51F55F2CF007DD398 /* 123104_103319-lq.mp3 in Resources */,
-				17A620381F55FB54007DD398 /* Strings (Right Channel).caf in Resources */,
+				177630451F560CF7002FB1F3 /* Guitar 1.caf in Resources */,
 				17A61FA41F55F2CF007DD398 /* 123096_103319-lq.mp3 in Resources */,
-				17A620401F55FB54007DD398 /* Guitar 2.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,9 +324,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AudioEffectDemo/Pods-AudioEffectDemo-resources.sh",
+				"${PODS_ROOT}/LumberjackConsole/Source/LumberjackConsole.storyboard",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -318,9 +360,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AudioEffectDemo/Pods-AudioEffectDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AnyMesh/AnyMesh.framework",
+				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Dotzu/Dotzu.framework",
+				"${BUILT_PRODUCTS_DIR}/DotzuObjc/DotzuObjc.framework",
+				"${BUILT_PRODUCTS_DIR}/TheAmazingAudioEngine/TheAmazingAudioEngine.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnyMesh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dotzu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DotzuObjc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TheAmazingAudioEngine.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
