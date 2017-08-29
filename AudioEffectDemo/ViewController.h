@@ -11,5 +11,5 @@
 - (id)initWithAudioController:(AEAudioController*)audioController;
 
 @property (nonatomic, strong) AEAudioController *audioController;
-
+- (void)stopAllLoops;
 @end

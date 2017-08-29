@@ -28,8 +28,11 @@
     [_audioController start:NULL];
     
     // Create and display view controller
+
     self.viewController = [[ViewController alloc] initWithAudioController:_audioController];
-    self.window.rootViewController = self.viewController;
+    self.nc = [[UINavigationController alloc]initWithRootViewController:self.viewController];
+    self.viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self.viewController action:@selector(stopAllLoops)];
+    self.window.rootViewController = self.nc;
     [self.window makeKeyAndVisible];
     
     return YES;
