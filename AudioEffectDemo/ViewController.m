@@ -7,15 +7,23 @@
 #import "AERecorder.h"
 #import "AEReverbFilter.h"
 #import <QuartzCore/QuartzCore.h>
+#import <BlocksKit/UIControl+BlocksKit.h>
+#import <BlocksKit/BlocksKit.h>
+
 
 static const int kInputChannelsChangedContext;
 
 @interface ViewController () {
     AudioFileID _audioUnitFile;
     AEChannelGroupRef _group;
+    NSMutableArray *loops;
+    AnyMesh *anymesh;
+    NSMutableArray *messages;
+    NSMutableArray *peers;
 }
-@property (nonatomic, strong) AEAudioFilePlayer *loop1;
-@property (nonatomic, strong) AEAudioFilePlayer *loop2;
+#define kAuxiliaryViewTag 251
+
+
 @property (nonatomic, strong) AEBlockChannel *oscillator;
 @property (nonatomic, strong) AEAudioUnitChannel *audioUnitPlayer;
 @property (nonatomic, strong) AEAudioFilePlayer *oneshot;
@@ -38,22 +46,93 @@ static const int kInputChannelsChangedContext;
 
 @implementation ViewController
 
+
+- (void)prepareLoops {
+    [loops removeAllObjects];
+    
+    @autoreleasepool
+    {
+        NSArray *extensions = @[@"caf", @"m4a", @"mp4", @"mp3", @"wav", @"aif"];
+        NSArray *paths = nil;
+        BOOL foundSound = NO;
+        int x = 0;
+        for (NSString *extension in extensions) {
+            paths = [[NSBundle mainBundle] pathsForResourcesOfType:extension inDirectory:nil];
+            if ([paths count]) {
+                for (NSString *path in paths) {
+                    NSURL *URL = [NSURL fileURLWithPath:path];
+                    AEAudioFilePlayer *loop = [[AEAudioFilePlayer alloc ] initWithURL:URL error:nil];
+                    loop.volume = 1.0;
+                    loop.channelIsMuted = YES;
+                    loop.loop = YES;
+                    [loops addObject:loop];
+                    x++;
+                    foundSound = YES;
+
+                }
+            }
+        }
+        if (!foundSound) {
+            NSLog(@"SoundManager prepareToPlay failed to find sound in application bundle. Use prepareToPlayWithSound: instead to specify a suitable sound file.");
+        }
+    }
+}
+
 - (id)initWithAudioController:(AEAudioController*)audioController {
     if ( !(self = [super initWithStyle:UITableViewStyleGrouped]) ) return nil;
     
     self.audioController = audioController;
     
+    anymesh = [[AnyMesh alloc] init];
+    anymesh.delegate = self;
+    messages = [[NSMutableArray alloc] init];
+    peers = [[NSMutableArray alloc] init];
+    loops = [[NSMutableArray alloc]init];
+    
+    MeshDeviceInfo *dInfo = [[MeshDeviceInfo alloc] init];
+    NSString *uuid = [self getUUID];
+    dInfo.name = uuid;
+    //  NSLog(@"uuid:%@", uuid);
+    dInfo.subscriptions =  [NSMutableArray array];
+    [anymesh connectWithName:dInfo.name subscriptions:dInfo.subscriptions];
+    
+    
+    [self prepareLoops];
+    
+
+    _group = [_audioController createChannelGroup];
+    NSArray *arr = [NSArray arrayWithArray:loops];
+    _group = [_audioController createChannelGroup];
+    [_audioController addChannels:arr toChannelGroup:_group];
+    
+    // Finally, add the audio unit player
+    [_audioController addChannels:@[_audioUnitPlayer]];
+    
+    [_audioController addObserver:self forKeyPath:@"numberOfInputChannels" options:0 context:(void*)&kInputChannelsChangedContext];
+    
+    
     return self;
+}
+
+- (NSString *)getUUID {
+    NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uniqueID"];
+    if (!UUID) {
+        CFUUIDRef theUUID = CFUUIDCreate(NULL);
+        CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+        CFRelease(theUUID);
+        UUID = [(__bridge NSString *)string stringByReplacingOccurrencesOfString : @"-"withString : @""];
+        [[NSUserDefaults standardUserDefaults] setValue:UUID forKey:@"uniqueID"];
+    }
+    return UUID;
 }
 
 - (void)setAudioController:(AEAudioController *)audioController {
     if ( _audioController ) {
         [_audioController removeObserver:self forKeyPath:@"numberOfInputChannels"];
         
-        NSMutableArray *channelsToRemove = [NSMutableArray arrayWithObjects:_loop1, _loop2, _oscillator, _audioUnitPlayer, nil];
+        NSMutableArray *channelsToRemove = [NSMutableArray arrayWithObjects: _oscillator, _audioUnitPlayer, nil];
         
-        self.loop1 = nil;
-        self.loop2 = nil;
+
         self.oscillator = nil;
         self.audioUnitPlayer = nil;
         
@@ -102,17 +181,7 @@ static const int kInputChannelsChangedContext;
     _audioController = audioController;
     
     if ( _audioController ) {
-        // Create the first loop player
-        self.loop1 = [AEAudioFilePlayer audioFilePlayerWithURL:[[NSBundle mainBundle] URLForResource:@"Southern Rock Drums" withExtension:@"m4a"] error:NULL];
-        _loop1.volume = 1.0;
-        _loop1.channelIsMuted = YES;
-        _loop1.loop = YES;
-        
-        // Create the second loop player
-        self.loop2 = [AEAudioFilePlayer audioFilePlayerWithURL:[[NSBundle mainBundle] URLForResource:@"Southern Rock Organ" withExtension:@"m4a"] error:NULL];
-        _loop2.volume = 1.0;
-        _loop2.channelIsMuted = YES;
-        _loop2.loop = YES;
+       
         
         // Create a block-based channel, with an implementation of an oscillator
         __block float oscillatorPosition = 0;
@@ -139,14 +208,10 @@ static const int kInputChannelsChangedContext;
         // Create an audio unit channel (a file player)
         self.audioUnitPlayer = [[AEAudioUnitChannel alloc] initWithComponentDescription:AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_Generator, kAudioUnitSubType_AudioFilePlayer)];
         
-        // Create a group for loop1, loop2 and oscillator
-        _group = [_audioController createChannelGroup];
-        [_audioController addChannels:@[_loop1, _loop2, _oscillator] toChannelGroup:_group];
         
-        // Finally, add the audio unit player
-        [_audioController addChannels:@[_audioUnitPlayer]];
-        
-        [_audioController addObserver:self forKeyPath:@"numberOfInputChannels" options:0 context:(void*)&kInputChannelsChangedContext];
+
+     
+
     }
 }
 
@@ -158,6 +223,7 @@ static const int kInputChannelsChangedContext;
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 100)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -232,7 +298,7 @@ static const int kInputChannelsChangedContext;
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch ( section ) {
         case 0:
-            return 4;
+           return loops.count;
             
         case 1:
             return 2;
@@ -263,59 +329,39 @@ static const int kInputChannelsChangedContext;
     
     switch ( indexPath.section ) {
         case 0: {
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-            
-            UISlider *slider = [[UISlider alloc] initWithFrame:CGRectZero];
-            slider.translatesAutoresizingMaskIntoConstraints = NO;
+            cell.accessoryView = [[UISwitch alloc] initWithFrame:CGRectZero];
+            UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(cell.bounds.size.width - (isiPad ? 250 : 210), 0, 100, cell.bounds.size.height)];
+            slider.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+            slider.tag = kAuxiliaryViewTag;
             slider.maximumValue = 1.0;
             slider.minimumValue = 0.0;
+            [cell addSubview:slider];
             
-            UISwitch * onSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-            onSwitch.translatesAutoresizingMaskIntoConstraints = NO;
-            onSwitch.on = _expander != nil;
-            [view addSubview:slider];
-            [view addSubview:onSwitch];
-            [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[slider]-20-[onSwitch]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(slider, onSwitch)]];
-            [view addConstraint:[NSLayoutConstraint constraintWithItem:slider attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-            [view addConstraint:[NSLayoutConstraint constraintWithItem:onSwitch attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+            AEAudioFilePlayer *loop = [loops objectAtIndex:indexPath.row];
             
-            cell.accessoryView = view;
+            __weak ViewController *weakSelf = self;
+            __weak AEAudioFilePlayer *weakLoop = loop;
             
-            switch ( indexPath.row ) {
-                case 0: {
-                    cell.textLabel.text = @"Drums";
-                    onSwitch.on = !_loop1.channelIsMuted;
-                    slider.value = _loop1.volume;
-                    [onSwitch addTarget:self action:@selector(loop1SwitchChanged:) forControlEvents:UIControlEventValueChanged];
-                    [slider addTarget:self action:@selector(loop1VolumeChanged:) forControlEvents:UIControlEventValueChanged];
-                    break;
-                }
-                case 1: {
-                    cell.textLabel.text = @"Organ";
-                    onSwitch.on = !_loop2.channelIsMuted;
-                    slider.value = _loop2.volume;
-                    [onSwitch addTarget:self action:@selector(loop2SwitchChanged:) forControlEvents:UIControlEventValueChanged];
-                    [slider addTarget:self action:@selector(loop2VolumeChanged:) forControlEvents:UIControlEventValueChanged];
-                    break;
-                }
-                case 2: {
-                    cell.textLabel.text = @"Oscillator";
-                    onSwitch.on = !_oscillator.channelIsMuted;
-                    slider.value = _oscillator.volume;
-                    [onSwitch addTarget:self action:@selector(oscillatorSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-                    [slider addTarget:self action:@selector(oscillatorVolumeChanged:) forControlEvents:UIControlEventValueChanged];
-                    break;
-                }
-                case 3: {
-                    cell.textLabel.text = @"Group";
-                    onSwitch.on = ![_audioController channelGroupIsMuted:_group];
-                    slider.value = [_audioController volumeForChannelGroup:_group];
-                    [onSwitch addTarget:self action:@selector(channelGroupSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-                    [slider addTarget:self action:@selector(channelGroupVolumeChanged:) forControlEvents:UIControlEventValueChanged];
-                    break;
-                }
-            }
-            break;
+            
+            NSString *filename = [loop.url.absoluteString lastPathComponent];
+            cell.textLabel.text = filename;
+            UISwitch *switchy = (UISwitch *)cell.accessoryView;
+            switchy.on = !loop.channelIsMuted;
+            slider.value = loop.volume;
+            //__weak AnyMesh *weakAnymesh = anymesh;
+            
+            [switchy bk_addEventHandler: ^(id sender)
+             {
+                 weakLoop.channelIsMuted = !((UISwitch *)sender).isOn;
+                 [weakSelf broadcastToPeers:weakLoop sender:sender];
+             }          forControlEvents:UIControlEventValueChanged];
+            
+            
+            [slider bk_addEventHandler: ^(id sender)
+             {
+                 weakLoop.volume = ((UISlider *)sender).value;
+                 [weakSelf broadcastToPeers:weakLoop sender:sender];
+             }         forControlEvents:UIControlEventValueChanged];
         }
         case 1: {
             switch ( indexPath.row ) {
@@ -451,21 +497,51 @@ static const int kInputChannelsChangedContext;
     return cell;
 }
 
-- (void)loop1SwitchChanged:(UISwitch*)sender {
-    _loop1.channelIsMuted = !sender.isOn;
+
+- (void)startBroadcastToPeers {
+    //    [self stopBroadcastToPeers];
+    NSLog(@"requestToTarget");
+    for (NSString *peer in peers) {
+        [anymesh requestToTarget:peer withData:@{ @"msg":@"start" }];
+    }
+    
+    NSLog(@"publishToTarget");
+    for (NSString *peer in peers) {
+        [anymesh publishToTarget:peer withData:@{ @"msg":@"start" }];
+    }
 }
 
-- (void)loop1VolumeChanged:(UISlider*)sender {
-    _loop1.volume = sender.value;
+- (void)stopAllLoops {
+    for (AEAudioFilePlayer *loop in loops) {
+        [loop setCurrentTime:0];
+    }
 }
 
-- (void)loop2SwitchChanged:(UISwitch*)sender {
-    _loop2.channelIsMuted = !sender.isOn;
+- (void)stopBroadcastToPeers {
+    [self stopAllLoops];
+    NSLog(@"requestToTarget");
+    for (NSString *peer in peers) {
+        [anymesh requestToTarget:peer withData:@{ @"msg":@"stop" }];
+    }
+    
+    NSLog(@"publishToTarget");
+    for (NSString *peer in peers) {
+        [anymesh publishToTarget:peer withData:@{ @"msg":@"stop" }];
+    }
 }
 
-- (void)loop2VolumeChanged:(UISlider*)sender {
-    _loop2.volume = sender.value;
+- (void)broadcastToPeers:(AEAudioFilePlayer *)loop sender:(UIControl *)sender {
+    NSLog(@"requestToTarget");
+    for (NSString *peer in peers) {
+        [anymesh requestToTarget:peer withData:@{ @"url":loop.url.absoluteString, @"msg":@"none" }];
+    }
+    
+    NSLog(@"publishToTarget");
+    for (NSString *peer in peers) {
+        [anymesh publishToTarget:peer withData:@{ @"url":loop.url.absoluteString, @"msg":@"none" }];
+    }
 }
+
 
 - (void)oscillatorSwitchChanged:(UISwitch*)sender {
     _oscillator.channelIsMuted = !sender.isOn;
@@ -489,7 +565,7 @@ static const int kInputChannelsChangedContext;
         self.oneshot = nil;
         _oneshotButton.selected = NO;
     } else {
-        self.oneshot = [AEAudioFilePlayer audioFilePlayerWithURL:[[NSBundle mainBundle] URLForResource:@"Organ Run" withExtension:@"m4a"] error:NULL];
+        self.oneshot = [AEAudioFilePlayer audioFilePlayerWithURL:[[NSBundle mainBundle] URLForResource:@"123094_103319-lq" withExtension:@"mp3"] error:NULL];
         _oneshot.removeUponFinish = YES;
         __weak ViewController *weakSelf = self;
         _oneshot.completionBlock = ^{
@@ -504,7 +580,7 @@ static const int kInputChannelsChangedContext;
 
 - (void)oneshotAudioUnitPlayButtonPressed:(UIButton*)sender {
     if ( !_audioUnitFile ) {
-        NSURL *playerFile = [[NSBundle mainBundle] URLForResource:@"Organ Run" withExtension:@"m4a"];
+        NSURL *playerFile = [[NSBundle mainBundle] URLForResource:@"123096_103319-lq" withExtension:@"mp3"];
         AECheckOSStatus(AudioFileOpenURL((__bridge CFURLRef)playerFile, kAudioFileReadPermission, 0, &_audioUnitFile), "AudioFileOpenURL");
     }
     
