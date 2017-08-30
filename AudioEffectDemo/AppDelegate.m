@@ -1,10 +1,3 @@
-//
-//  AppDelegate.m
-//  Audio Controller Test Suite
-//
-//  Created by Michael Tyson on 13/02/2012.
-//  Copyright (c) 2012 A Tasty Pixel. All rights reserved.
-//
 
 #import "AppDelegate.h"
 #import "ViewController.h"
@@ -31,9 +24,10 @@
     
     // Create and display view controller
 
-    self.viewController = [[ViewController alloc] initWithAudioController:_audioController];
+    self.viewController = [[MCViewController alloc] initWithAudioController:_audioController];
     self.nc = [[UINavigationController alloc]initWithRootViewController:self.viewController];
-    self.viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self.viewController action:@selector(stopAllLoops)];
+    self.viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Stop Peers" style:UIBarButtonItemStylePlain target:self.viewController action:@selector(stopBroadcastToPeers)];
+    self.viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Start" style:UIBarButtonItemStylePlain target:self.viewController action:@selector(startBroadcastToPeers)];
     self.window.rootViewController = self.nc;
     [self.window makeKeyAndVisible];
     

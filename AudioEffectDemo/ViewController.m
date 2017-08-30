@@ -17,7 +17,7 @@ static const int kInputChannelsChangedContext;
     AudioFileID _audioUnitFile;
     AEChannelGroupRef _group;
     NSMutableArray *loops;
-    AnyMesh *anymesh;
+   
     NSMutableArray *messages;
     NSMutableArray *peers;
 }
@@ -75,7 +75,7 @@ static const int kInputChannelsChangedContext;
             }
         }
         if (!foundSound) {
-            LogInfo(@"SoundManager prepareToPlay failed to find sound in application bundle. Use prepareToPlayWithSound: instead to specify a suitable sound file.");
+            LogVerbose(@"SoundManager prepareToPlay failed to find sound in application bundle. Use prepareToPlayWithSound: instead to specify a suitable sound file.");
         }
     }
 }
@@ -94,7 +94,7 @@ static const int kInputChannelsChangedContext;
     MeshDeviceInfo *dInfo = [[MeshDeviceInfo alloc] init];
     NSString *uuid = [self getUUID];
     dInfo.name = uuid;
-    //  LogInfo(@"uuid:%@", uuid);
+    //  LogVerbose(@"uuid:%@", uuid);
     dInfo.subscriptions =  [NSMutableArray array];
     [anymesh connectWithName:dInfo.name subscriptions:dInfo.subscriptions];
     
@@ -498,19 +498,23 @@ static const int kInputChannelsChangedContext;
 
 - (void)startBroadcastToPeers {
 
-    LogInfo(@"requestToTarget");
+    LogVerbose(@"requestToTarget");
     uint64_t now = AECurrentTimeInHostTicks();
+    /*
     for (NSString *peer in peers) {
         [anymesh requestToTarget:peer withData:@{ @"msg":@"start",@"uuid":[self getUUID],@"hostTime":[NSString stringWithFormat:@"%llu",now] }];
     }
     
-    LogInfo(@"publishToTarget");
+    LogVerbose(@"publishToTarget");
     for (NSString *peer in peers) {
          [anymesh requestToTarget:peer withData:@{ @"msg":@"start",@"uuid":[self getUUID],@"hostTime":[NSString stringWithFormat:@"%llu",now] }];
     }
+    //
+     */
+    [self stopAndStartAllLoops];
 }
 
-- (void)stopAllLoops {
+- (void)stopAndStartAllLoops {
     uint64_t now = AECurrentTimeInHostTicks() + AEHostTicksFromSeconds(2);
     for (AEAudioFilePlayer *loop in loops) {
         [loop playAtTime:now];
@@ -520,7 +524,7 @@ static const int kInputChannelsChangedContext;
 
 #pragma mark - AnyMesh Delegate Methods
 - (void)anyMesh:(AnyMesh *)anyMesh connectedTo:(MeshDeviceInfo *)device {
-    LogInfo(@"connectedTo:%@", device);
+    LogVerbose(@"connectedTo:%@", device);
     [peers addObject:device.name];
 }
 
@@ -530,44 +534,44 @@ static const int kInputChannelsChangedContext;
 }
 
 - (void)anyMesh:(AnyMesh *)anyMesh receivedMessage:(MeshMessage *)message {
-    LogInfo(@"receivedMessage:%@", message.data[@"msg"]);
+    LogVerbose(@"receivedMessage:%@", message.data[@"msg"]);
     
     NSString *url = message.data[@"url"];
     NSString *filename = [url lastPathComponent];
     for (AEAudioFilePlayer *loop in loops) {
         if ([[loop.url.absoluteString lastPathComponent] isEqualToString:filename]) {
             loop.channelIsMuted = YES;
-            //  [loop setCurrentTime:0];
         }
     }
     
     if ([message.data[@"msg"] isEqualToString:@"stop"]) {
-        [self stopAllLoops];
+        [self stopAndStartAllLoops];
     }
     
     [self.tableView reloadData];
 }
 
+
 - (void)stopBroadcastToPeers {
-    [self stopAllLoops];
-    LogInfo(@"requestToTarget");
+    [self stopAndStartAllLoops];
+    LogVerbose(@"requestToTarget");
     for (NSString *peer in peers) {
         [anymesh requestToTarget:peer withData:@{ @"msg":@"stop" }];
     }
     
-    LogInfo(@"publishToTarget");
+    LogVerbose(@"publishToTarget");
     for (NSString *peer in peers) {
         [anymesh publishToTarget:peer withData:@{ @"msg":@"stop" }];
     }
 }
 
 - (void)broadcastToPeers:(AEAudioFilePlayer *)loop sender:(UIControl *)sender {
-    LogInfo(@"requestToTarget");
+    LogVerbose(@"requestToTarget");
     for (NSString *peer in peers) {
         [anymesh requestToTarget:peer withData:@{ @"url":loop.url.absoluteString, @"msg":@"none" }];
     }
     
-    LogInfo(@"publishToTarget");
+    LogVerbose(@"publishToTarget");
     for (NSString *peer in peers) {
         [anymesh publishToTarget:peer withData:@{ @"url":loop.url.absoluteString, @"msg":@"none" }];
     }

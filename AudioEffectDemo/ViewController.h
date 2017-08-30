@@ -1,12 +1,9 @@
-
 #import <UIKit/UIKit.h>
-#import <AnyMesh/MeshDeviceInfo.h>
-#import <AnyMesh/MeshMessage.h>
-#import <AnyMesh/AnyMesh.h>
 #import "AppDelegate.h"
 
+
 @class AEAudioController;
-@interface ViewController : UITableViewController <AnyMeshDelegate>
+@interface ViewController : UITableViewController 
 
 - (id)initWithAudioController:(AEAudioController*)audioController;
 

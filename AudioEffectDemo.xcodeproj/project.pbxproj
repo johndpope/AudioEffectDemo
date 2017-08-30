@@ -7,23 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		177630361F560CF7002FB1F3 /* Strings (Middle).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6201F1F55FB54007DD398 /* Strings (Middle).caf */; };
-		177630371F560CF7002FB1F3 /* Finger Snaps, Vocal Bits.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620201F55FB54007DD398 /* Finger Snaps, Vocal Bits.caf */; };
-		177630381F560CF7002FB1F3 /* Vibes.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620211F55FB54007DD398 /* Vibes.caf */; };
-		177630391F560CF7002FB1F3 /* Piano.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620221F55FB54007DD398 /* Piano.caf */; };
-		1776303A1F560CF7002FB1F3 /* Lead Vocals 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620231F55FB54007DD398 /* Lead Vocals 1.caf */; };
-		1776303B1F560CF7002FB1F3 /* Lead Vocals 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620241F55FB54007DD398 /* Lead Vocals 2.caf */; };
-		1776303C1F560CF7002FB1F3 /* Background Vocals.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620251F55FB54007DD398 /* Background Vocals.caf */; };
-		1776303D1F560CF7002FB1F3 /* Saxophone.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620261F55FB54007DD398 /* Saxophone.caf */; };
-		1776303E1F560CF7002FB1F3 /* Strings (Right Channel).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620271F55FB54007DD398 /* Strings (Right Channel).caf */; };
-		1776303F1F560CF7002FB1F3 /* Drum Kit 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620281F55FB54007DD398 /* Drum Kit 2.caf */; };
-		177630401F560CF7002FB1F3 /* Strings (Left Channel).caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A620291F55FB54007DD398 /* Strings (Left Channel).caf */; };
-		177630411F560CF7002FB1F3 /* Drum Kit 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202A1F55FB54007DD398 /* Drum Kit 1.caf */; };
-		177630421F560CF7002FB1F3 /* text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202B1F55FB54007DD398 /* text.txt */; };
-		177630431F560CF7002FB1F3 /* Percussion.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202C1F55FB54007DD398 /* Percussion.caf */; };
-		177630441F560CF7002FB1F3 /* Bass.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202D1F55FB54007DD398 /* Bass.caf */; };
-		177630451F560CF7002FB1F3 /* Guitar 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202E1F55FB54007DD398 /* Guitar 1.caf */; };
-		177630461F560CF7002FB1F3 /* Guitar 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202F1F55FB54007DD398 /* Guitar 2.caf */; };
+		1776304F1F563AC4002FB1F3 /* Beat It (Kick).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 177630481F563AB8002FB1F3 /* Beat It (Kick).mp3 */; };
+		177630501F563AC4002FB1F3 /* Beat It (Bass).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 177630491F563AB8002FB1F3 /* Beat It (Bass).mp3 */; };
+		177630511F563AC4002FB1F3 /* Beat It (Drums).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1776304A1F563AB8002FB1F3 /* Beat It (Drums).mp3 */; };
+		177630521F563AC4002FB1F3 /* _DS_Store in Resources */ = {isa = PBXBuildFile; fileRef = 1776304B1F563AB8002FB1F3 /* _DS_Store */; };
+		177630531F563AC4002FB1F3 /* Beat It (Cymbals).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1776304C1F563AB8002FB1F3 /* Beat It (Cymbals).mp3 */; };
+		177630541F563AC4002FB1F3 /* Beat It (Vocals).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1776304D1F563AB8002FB1F3 /* Beat It (Vocals).mp3 */; };
+		177630551F563AC4002FB1F3 /* Beat It (Guitar).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1776304E1F563AB8002FB1F3 /* Beat It (Guitar).mp3 */; };
+		177630571F563BAA002FB1F3 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177630561F563BAA002FB1F3 /* MultipeerConnectivity.framework */; };
+		1776305A1F563BF4002FB1F3 /* Peers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177630591F563BF4002FB1F3 /* Peers.swift */; };
+		1776305D1F563C49002FB1F3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1776305C1F563C49002FB1F3 /* AudioToolbox.framework */; };
+		177630601F563EE5002FB1F3 /* ViewController+Peerkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1776305F1F563EE5002FB1F3 /* ViewController+Peerkit.m */; };
 		17A61FA21F55F2CF007DD398 /* 87035_1332467-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */; };
 		17A61FA31F55F2CF007DD398 /* 123094_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */; };
 		17A61FA41F55F2CF007DD398 /* 123096_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */; };
@@ -41,6 +35,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		177630481F563AB8002FB1F3 /* Beat It (Kick).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beat It (Kick).mp3"; sourceTree = "<group>"; };
+		177630491F563AB8002FB1F3 /* Beat It (Bass).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beat It (Bass).mp3"; sourceTree = "<group>"; };
+		1776304A1F563AB8002FB1F3 /* Beat It (Drums).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beat It (Drums).mp3"; sourceTree = "<group>"; };
+		1776304B1F563AB8002FB1F3 /* _DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; path = _DS_Store; sourceTree = "<group>"; };
+		1776304C1F563AB8002FB1F3 /* Beat It (Cymbals).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beat It (Cymbals).mp3"; sourceTree = "<group>"; };
+		1776304D1F563AB8002FB1F3 /* Beat It (Vocals).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beat It (Vocals).mp3"; sourceTree = "<group>"; };
+		1776304E1F563AB8002FB1F3 /* Beat It (Guitar).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beat It (Guitar).mp3"; sourceTree = "<group>"; };
+		177630561F563BAA002FB1F3 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
+		177630581F563BF3002FB1F3 /* AudioEffectDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioEffectDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		177630591F563BF4002FB1F3 /* Peers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peers.swift; sourceTree = "<group>"; };
+		1776305B1F563C49002FB1F3 /* AudioEffectDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AudioEffectDemo.entitlements; sourceTree = "<group>"; };
+		1776305C1F563C49002FB1F3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1776305E1F563EE5002FB1F3 /* ViewController+Peerkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewController+Peerkit.h"; sourceTree = "<group>"; };
+		1776305F1F563EE5002FB1F3 /* ViewController+Peerkit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Peerkit.m"; sourceTree = "<group>"; };
 		17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "87035_1332467-lq.mp3"; sourceTree = "<group>"; };
 		17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123094_103319-lq.mp3"; sourceTree = "<group>"; };
 		17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123096_103319-lq.mp3"; sourceTree = "<group>"; };
@@ -102,7 +110,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				177630571F563BAA002FB1F3 /* MultipeerConnectivity.framework in Frameworks */,
 				3C889E250F4EE4BCA7FCA90C /* Pods_AudioEffectDemo.framework in Frameworks */,
+				1776305D1F563C49002FB1F3 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,9 +122,26 @@
 		0213C568781B977E82096C0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1776305C1F563C49002FB1F3 /* AudioToolbox.framework */,
+				177630561F563BAA002FB1F3 /* MultipeerConnectivity.framework */,
 				7AC211C6491CFD1DA1F9FD60 /* Pods_AudioEffectDemo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		177630471F563AB8002FB1F3 /* Beat It (Rock Band) [Multitracks] */ = {
+			isa = PBXGroup;
+			children = (
+				177630481F563AB8002FB1F3 /* Beat It (Kick).mp3 */,
+				177630491F563AB8002FB1F3 /* Beat It (Bass).mp3 */,
+				1776304A1F563AB8002FB1F3 /* Beat It (Drums).mp3 */,
+				1776304B1F563AB8002FB1F3 /* _DS_Store */,
+				1776304C1F563AB8002FB1F3 /* Beat It (Cymbals).mp3 */,
+				1776304D1F563AB8002FB1F3 /* Beat It (Vocals).mp3 */,
+				1776304E1F563AB8002FB1F3 /* Beat It (Guitar).mp3 */,
+			);
+			name = "Beat It (Rock Band) [Multitracks]";
+			path = "../../../Desktop/Beat It (Rock Band) [Multitracks]";
 			sourceTree = "<group>";
 		};
 		17A6201E1F55FB54007DD398 /* Sounds */ = {
@@ -194,6 +221,8 @@
 		E868644C1D75B5E400DE35C6 /* AudioEffectDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1776305B1F563C49002FB1F3 /* AudioEffectDemo.entitlements */,
+				177630471F563AB8002FB1F3 /* Beat It (Rock Band) [Multitracks] */,
 				17A620411F560454007DD398 /* Red Hot Chilli Peppers DANI CALIFORNIA [MULTITRACKS] */,
 				17A6201E1F55FB54007DD398 /* Sounds */,
 				17A61FFA1F55F5B0007DD398 /* CellData.h */,
@@ -203,11 +232,15 @@
 				E86864501D75B5E400DE35C6 /* AppDelegate.h */,
 				E86864511D75B5E400DE35C6 /* AppDelegate.m */,
 				E86864531D75B5E400DE35C6 /* ViewController.h */,
+				1776305E1F563EE5002FB1F3 /* ViewController+Peerkit.h */,
+				1776305F1F563EE5002FB1F3 /* ViewController+Peerkit.m */,
 				E86864541D75B5E400DE35C6 /* ViewController.m */,
 				E86864591D75B5E400DE35C6 /* Assets.xcassets */,
 				E868645B1D75B5E400DE35C6 /* LaunchScreen.storyboard */,
 				E868645E1D75B5E400DE35C6 /* Info.plist */,
 				E868644D1D75B5E400DE35C6 /* Supporting Files */,
+				177630591F563BF4002FB1F3 /* Peers.swift */,
+				177630581F563BF3002FB1F3 /* AudioEffectDemo-Bridging-Header.h */,
 			);
 			path = AudioEffectDemo;
 			sourceTree = "<group>";
@@ -261,6 +294,15 @@
 					E86864491D75B5E400DE35C6 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = KL43C67G5Z;
+						LastSwiftMigration = 0900;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -287,31 +329,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1776303B1F560CF7002FB1F3 /* Lead Vocals 2.caf in Resources */,
-				1776303F1F560CF7002FB1F3 /* Drum Kit 2.caf in Resources */,
-				1776303D1F560CF7002FB1F3 /* Saxophone.caf in Resources */,
+				177630531F563AC4002FB1F3 /* Beat It (Cymbals).mp3 in Resources */,
 				17A61FA21F55F2CF007DD398 /* 87035_1332467-lq.mp3 in Resources */,
 				E868645D1D75B5E400DE35C6 /* LaunchScreen.storyboard in Resources */,
-				1776303E1F560CF7002FB1F3 /* Strings (Right Channel).caf in Resources */,
-				177630441F560CF7002FB1F3 /* Bass.caf in Resources */,
-				177630431F560CF7002FB1F3 /* Percussion.caf in Resources */,
-				177630421F560CF7002FB1F3 /* text.txt in Resources */,
 				17A61FA71F55F2CF007DD398 /* 123111_103319-lq.mp3 in Resources */,
-				177630371F560CF7002FB1F3 /* Finger Snaps, Vocal Bits.caf in Resources */,
-				1776303C1F560CF7002FB1F3 /* Background Vocals.caf in Resources */,
-				177630361F560CF7002FB1F3 /* Strings (Middle).caf in Resources */,
 				17A61FA31F55F2CF007DD398 /* 123094_103319-lq.mp3 in Resources */,
-				177630401F560CF7002FB1F3 /* Strings (Left Channel).caf in Resources */,
-				177630391F560CF7002FB1F3 /* Piano.caf in Resources */,
+				177630511F563AC4002FB1F3 /* Beat It (Drums).mp3 in Resources */,
+				177630551F563AC4002FB1F3 /* Beat It (Guitar).mp3 in Resources */,
 				17A61FA61F55F2CF007DD398 /* 123108_103319-lq.mp3 in Resources */,
-				1776303A1F560CF7002FB1F3 /* Lead Vocals 1.caf in Resources */,
 				E868645A1D75B5E400DE35C6 /* Assets.xcassets in Resources */,
-				177630411F560CF7002FB1F3 /* Drum Kit 1.caf in Resources */,
-				177630381F560CF7002FB1F3 /* Vibes.caf in Resources */,
-				177630461F560CF7002FB1F3 /* Guitar 2.caf in Resources */,
+				177630521F563AC4002FB1F3 /* _DS_Store in Resources */,
+				1776304F1F563AC4002FB1F3 /* Beat It (Kick).mp3 in Resources */,
+				177630541F563AC4002FB1F3 /* Beat It (Vocals).mp3 in Resources */,
 				17A61FA51F55F2CF007DD398 /* 123104_103319-lq.mp3 in Resources */,
-				177630451F560CF7002FB1F3 /* Guitar 1.caf in Resources */,
 				17A61FA41F55F2CF007DD398 /* 123096_103319-lq.mp3 in Resources */,
+				177630501F563AC4002FB1F3 /* Beat It (Bass).mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,8 +422,10 @@
 				17A61FF91F55F46D007DD398 /* TPOscilloscopeLayer.m in Sources */,
 				E86864551D75B5E400DE35C6 /* ViewController.m in Sources */,
 				17A61FFC1F55F5B0007DD398 /* CellData.m in Sources */,
+				177630601F563EE5002FB1F3 /* ViewController+Peerkit.m in Sources */,
 				E86864521D75B5E400DE35C6 /* AppDelegate.m in Sources */,
 				E868644F1D75B5E400DE35C6 /* main.m in Sources */,
+				1776305A1F563BF4002FB1F3 /* Peers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +532,8 @@
 			baseConfigurationReference = D448C28DFA18801B5ADD416C /* Pods-AudioEffectDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AudioEffectDemo/AudioEffectDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KL43C67G5Z;
@@ -506,6 +542,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.liyintao.iron.AudioEffectDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AudioEffectDemo/AudioEffectDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -514,6 +553,8 @@
 			baseConfigurationReference = AC88AE456125B7127EE6EAC2 /* Pods-AudioEffectDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AudioEffectDemo/AudioEffectDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KL43C67G5Z;
@@ -522,6 +563,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.liyintao.iron.AudioEffectDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AudioEffectDemo/AudioEffectDemo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
