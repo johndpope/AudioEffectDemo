@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) AEAudioController *audioController;
 - (void)stopAllLoops;
+- (void)stopBroadcastToPeers;
+- (void)startBroadcastToPeers;
 @end

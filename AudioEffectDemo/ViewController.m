@@ -495,6 +495,36 @@ static const int kInputChannelsChangedContext;
     return cell;
 }
 
+#pragma mark - AnyMesh Delegate Methods
+- (void)anyMesh:(AnyMesh *)anyMesh connectedTo:(MeshDeviceInfo *)device {
+    NSLog(@"connectedTo:%@", device);
+    [peers addObject:device.name];
+}
+
+- (void)anyMesh:(AnyMesh *)anyMesh disconnectedFrom:(NSString *)name {
+    NSLog(@"disconnectedFrom:%@", name);
+    [peers removeObject:name];
+}
+
+- (void)anyMesh:(AnyMesh *)anyMesh receivedMessage:(MeshMessage *)message {
+    NSLog(@"receivedMessage:%@", message.data[@"msg"]);
+    
+    NSString *url = message.data[@"url"];
+    NSString *filename = [url lastPathComponent];
+    for (AEAudioFilePlayer *loop in loops) {
+        if ([[loop.url.absoluteString lastPathComponent] isEqualToString:filename]) {
+            loop.channelIsMuted = YES;
+            //  [loop setCurrentTime:0];
+        }
+    }
+    
+    if ([message.data[@"msg"] isEqualToString:@"stop"]) {
+        [self stopAllLoops];
+    }
+    
+    [self.tableView reloadData];
+}
+
 
 - (void)startBroadcastToPeers {
     //    [self stopBroadcastToPeers];
