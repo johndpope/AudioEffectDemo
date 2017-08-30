@@ -3,10 +3,6 @@
 @class ViewController;
 @class AEAudioController;
 
-
-static const int ddLogLevel = 1;
-
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

@@ -3,7 +3,7 @@
 #import <AnyMesh/MeshDeviceInfo.h>
 #import <AnyMesh/MeshMessage.h>
 #import <AnyMesh/AnyMesh.h>
-#import "AppDelegate.h"
+
 
 @class AEAudioController;
 @interface ViewController : UITableViewController <AnyMeshDelegate>
