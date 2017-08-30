@@ -24,6 +24,7 @@
 		177630441F560CF7002FB1F3 /* Bass.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202D1F55FB54007DD398 /* Bass.caf */; };
 		177630451F560CF7002FB1F3 /* Guitar 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202E1F55FB54007DD398 /* Guitar 1.caf */; };
 		177630461F560CF7002FB1F3 /* Guitar 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202F1F55FB54007DD398 /* Guitar 2.caf */; };
+		177630631F5734D7002FB1F3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177630621F5734D7002FB1F3 /* AudioToolbox.framework */; };
 		17A61FA21F55F2CF007DD398 /* 87035_1332467-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */; };
 		17A61FA31F55F2CF007DD398 /* 123094_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */; };
 		17A61FA41F55F2CF007DD398 /* 123096_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */; };
@@ -41,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		177630611F5734D7002FB1F3 /* AudioEffectDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AudioEffectDemo.entitlements; sourceTree = "<group>"; };
+		177630621F5734D7002FB1F3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "87035_1332467-lq.mp3"; sourceTree = "<group>"; };
 		17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123094_103319-lq.mp3"; sourceTree = "<group>"; };
 		17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123096_103319-lq.mp3"; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C889E250F4EE4BCA7FCA90C /* Pods_AudioEffectDemo.framework in Frameworks */,
+				177630631F5734D7002FB1F3 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +116,7 @@
 		0213C568781B977E82096C0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				177630621F5734D7002FB1F3 /* AudioToolbox.framework */,
 				7AC211C6491CFD1DA1F9FD60 /* Pods_AudioEffectDemo.framework */,
 			);
 			name = Frameworks;
@@ -194,6 +199,7 @@
 		E868644C1D75B5E400DE35C6 /* AudioEffectDemo */ = {
 			isa = PBXGroup;
 			children = (
+				177630611F5734D7002FB1F3 /* AudioEffectDemo.entitlements */,
 				17A620411F560454007DD398 /* Red Hot Chilli Peppers DANI CALIFORNIA [MULTITRACKS] */,
 				17A6201E1F55FB54007DD398 /* Sounds */,
 				17A61FFA1F55F5B0007DD398 /* CellData.h */,
@@ -261,6 +267,14 @@
 					E86864491D75B5E400DE35C6 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = KL43C67G5Z;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -500,6 +514,7 @@
 			baseConfigurationReference = D448C28DFA18801B5ADD416C /* Pods-AudioEffectDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AudioEffectDemo/AudioEffectDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KL43C67G5Z;
@@ -516,6 +531,7 @@
 			baseConfigurationReference = AC88AE456125B7127EE6EAC2 /* Pods-AudioEffectDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AudioEffectDemo/AudioEffectDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KL43C67G5Z;

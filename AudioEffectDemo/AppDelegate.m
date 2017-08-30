@@ -12,6 +12,22 @@
 @synthesize viewController = _viewController;
 @synthesize audioController = _audioController;
 
+- (void)addlistenerForInternetReachability{
+
+    // setup reachabilty
+    __weak AppDelegate *weakSelf = self;
+    self.reach = [Reachability reachabilityForInternetConnection];
+    self.reach.reachableBlock  = ^(Reachability *reach) {
+        LogInfo(@"Reachable");
+    };
+    
+    [self.reach startNotifier];
+    if (self.reach.isReachable) {
+        LogInfo(@"Reachable");
+        [self.viewController connectToPeers];
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -33,6 +49,7 @@
     
     
     [[Dotzu sharedManager] enable];
+    [self addlistenerForInternetReachability];
     
     return YES;
 }

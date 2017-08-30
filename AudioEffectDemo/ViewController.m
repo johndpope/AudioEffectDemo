@@ -20,6 +20,8 @@ static const int kInputChannelsChangedContext;
     AnyMesh *anymesh;
     NSMutableArray *messages;
     NSMutableArray *peers;
+    
+    MeshDeviceInfo *dInfo;
 }
 #define kAuxiliaryViewTag 251
 
@@ -79,6 +81,12 @@ static const int kInputChannelsChangedContext;
         }
     }
 }
+-(void)suspend{
+    [anymesh  suspend];
+}
+-(void)connectToPeers{
+     [anymesh connectWithName:dInfo.name subscriptions:dInfo.subscriptions];
+}
 
 - (id)initWithAudioController:(AEAudioController*)audioController {
     if ( !(self = [super initWithStyle:UITableViewStyleGrouped]) ) return nil;
@@ -91,12 +99,12 @@ static const int kInputChannelsChangedContext;
     peers = [[NSMutableArray alloc] init];
     loops = [[NSMutableArray alloc]init];
     
-    MeshDeviceInfo *dInfo = [[MeshDeviceInfo alloc] init];
+    dInfo = [[MeshDeviceInfo alloc] init];
     NSString *uuid = [self getUUID];
     dInfo.name = uuid;
     //  LogInfo(@"uuid:%@", uuid);
     dInfo.subscriptions =  [NSMutableArray array];
-    [anymesh connectWithName:dInfo.name subscriptions:dInfo.subscriptions];
+   
     
     
     [self prepareLoops];
@@ -343,6 +351,7 @@ static const int kInputChannelsChangedContext;
             
             NSString *filename = [loop.url.absoluteString lastPathComponent];
             cell.textLabel.text = filename;
+            
             UISwitch *switchy = (UISwitch *)cell.accessoryView;
             switchy.on = !loop.channelIsMuted;
             slider.value = loop.volume;
@@ -504,10 +513,7 @@ static const int kInputChannelsChangedContext;
         [anymesh requestToTarget:peer withData:@{ @"msg":@"start",@"uuid":[self getUUID],@"hostTime":[NSString stringWithFormat:@"%llu",now] }];
     }
     
-    LogVerbose(@"publishToTarget");
-    for (NSString *peer in peers) {
-         [anymesh requestToTarget:peer withData:@{ @"msg":@"start",@"uuid":[self getUUID],@"hostTime":[NSString stringWithFormat:@"%llu",now] }];
-    }
+
 }
 
 - (void)stopAllLoops {
@@ -522,11 +528,15 @@ static const int kInputChannelsChangedContext;
 - (void)anyMesh:(AnyMesh *)anyMesh connectedTo:(MeshDeviceInfo *)device {
     LogInfo(@"connectedTo:%@", device);
     [peers addObject:device.name];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:57.0/255.0 green:158.0/255 blue:209.0/255 alpha:1.0];
 }
 
 - (void)anyMesh:(AnyMesh *)anyMesh disconnectedFrom:(NSString *)name {
     LogWarning(@"disconnectedFrom:%@", name);
     [peers removeObject:name];
+    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)anyMesh:(AnyMesh *)anyMesh receivedMessage:(MeshMessage *)message {
@@ -541,6 +551,9 @@ static const int kInputChannelsChangedContext;
         }
     }
     
+    if ([message.data[@"msg"] isEqualToString:@"start"]) {
+       // [self start];
+    }
     if ([message.data[@"msg"] isEqualToString:@"stop"]) {
         [self stopAllLoops];
     }
