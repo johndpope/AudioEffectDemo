@@ -1,5 +1,6 @@
 
 #import <UIKit/UIKit.h>
+#import "Reachability.h"
 @class ViewController;
 @class AEAudioController;
 

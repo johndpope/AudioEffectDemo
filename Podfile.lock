@@ -18,12 +18,14 @@ PODS:
   - Dotzu (1.8)
   - DotzuObjc (1.8):
     - Dotzu (~> 1.8)
+  - Reachability (3.2)
   - TheAmazingAudioEngine (1.6.0)
 
 DEPENDENCIES:
   - AnyMesh (= 0.3.0)
   - BlocksKit (= 2.2.3)
   - DotzuObjc
+  - Reachability
   - TheAmazingAudioEngine (from `https://github.com/johndpope/TheAmazingAudioEngine.git`, tag `1.6.0`)
 
 EXTERNAL SOURCES:
@@ -41,8 +43,9 @@ SPEC CHECKSUMS:
   BlocksKit: db63805ebfcc217c198532a900838bffdb400239
   Dotzu: e787896f08474f4e4574baa20ec556361dfebf0c
   DotzuObjc: b6747c7ca2bab7bd36fd62698d7d6a32d1f25de8
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   TheAmazingAudioEngine: 79473952247a1dd14ab9d2176eeb9fe5f4357efa
 
-PODFILE CHECKSUM: 3b1f6c96ce675895f079993c948f13dd87e42820
+PODFILE CHECKSUM: 118f4e2b10f7ef4d31d845d0f8fb9814f678ae83
 
 COCOAPODS: 1.3.1

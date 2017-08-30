@@ -6,7 +6,7 @@ project 'AudioEffectDemo.xcodeproj'
 target 'AudioEffectDemo' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
    use_frameworks!
-
+    pod 'Reachability'
     pod 'DotzuObjc'
     pod 'AnyMesh', '0.3.0'
     pod 'BlocksKit', '2.2.3'

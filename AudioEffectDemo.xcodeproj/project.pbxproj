@@ -365,6 +365,7 @@
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Dotzu/Dotzu.framework",
 				"${BUILT_PRODUCTS_DIR}/DotzuObjc/DotzuObjc.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/TheAmazingAudioEngine/TheAmazingAudioEngine.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -373,6 +374,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dotzu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DotzuObjc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TheAmazingAudioEngine.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

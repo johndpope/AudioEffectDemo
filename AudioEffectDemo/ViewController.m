@@ -75,7 +75,7 @@ static const int kInputChannelsChangedContext;
             }
         }
         if (!foundSound) {
-            LogInfo(@"SoundManager prepareToPlay failed to find sound in application bundle. Use prepareToPlayWithSound: instead to specify a suitable sound file.");
+            LogVerbose(@"SoundManager prepareToPlay failed to find sound in application bundle. Use prepareToPlayWithSound: instead to specify a suitable sound file.");
         }
     }
 }
@@ -498,13 +498,13 @@ static const int kInputChannelsChangedContext;
 
 - (void)startBroadcastToPeers {
 
-    LogInfo(@"requestToTarget");
+    LogVerbose(@"requestToTarget");
     uint64_t now = AECurrentTimeInHostTicks();
     for (NSString *peer in peers) {
         [anymesh requestToTarget:peer withData:@{ @"msg":@"start",@"uuid":[self getUUID],@"hostTime":[NSString stringWithFormat:@"%llu",now] }];
     }
     
-    LogInfo(@"publishToTarget");
+    LogVerbose(@"publishToTarget");
     for (NSString *peer in peers) {
          [anymesh requestToTarget:peer withData:@{ @"msg":@"start",@"uuid":[self getUUID],@"hostTime":[NSString stringWithFormat:@"%llu",now] }];
     }
@@ -530,7 +530,7 @@ static const int kInputChannelsChangedContext;
 }
 
 - (void)anyMesh:(AnyMesh *)anyMesh receivedMessage:(MeshMessage *)message {
-    LogInfo(@"receivedMessage:%@", message.data[@"msg"]);
+    LogVerbose(@"receivedMessage:%@", message.data[@"msg"]);
     
     NSString *url = message.data[@"url"];
     NSString *filename = [url lastPathComponent];
@@ -550,24 +550,24 @@ static const int kInputChannelsChangedContext;
 
 - (void)stopBroadcastToPeers {
     [self stopAllLoops];
-    LogInfo(@"requestToTarget");
+    LogVerbose(@"requestToTarget");
     for (NSString *peer in peers) {
         [anymesh requestToTarget:peer withData:@{ @"msg":@"stop" }];
     }
     
-    LogInfo(@"publishToTarget");
+    LogVerbose(@"publishToTarget");
     for (NSString *peer in peers) {
         [anymesh publishToTarget:peer withData:@{ @"msg":@"stop" }];
     }
 }
 
 - (void)broadcastToPeers:(AEAudioFilePlayer *)loop sender:(UIControl *)sender {
-    LogInfo(@"requestToTarget");
+    LogVerbose(@"requestToTarget");
     for (NSString *peer in peers) {
         [anymesh requestToTarget:peer withData:@{ @"url":loop.url.absoluteString, @"msg":@"none" }];
     }
     
-    LogInfo(@"publishToTarget");
+    LogVerbose(@"publishToTarget");
     for (NSString *peer in peers) {
         [anymesh publishToTarget:peer withData:@{ @"url":loop.url.absoluteString, @"msg":@"none" }];
     }
