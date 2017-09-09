@@ -25,6 +25,10 @@
 		177630451F560CF7002FB1F3 /* Guitar 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202E1F55FB54007DD398 /* Guitar 1.caf */; };
 		177630461F560CF7002FB1F3 /* Guitar 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17A6202F1F55FB54007DD398 /* Guitar 2.caf */; };
 		177630631F5734D7002FB1F3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177630621F5734D7002FB1F3 /* AudioToolbox.framework */; };
+		1776306D1F575E53002FB1F3 /* BRAudioSyncConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1776306C1F575A40002FB1F3 /* BRAudioSyncConstants.m */; };
+		1776306E1F575E60002FB1F3 /* NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 1776306A1F5759AA002FB1F3 /* NetworkClock.m */; };
+		177630701F575F16002FB1F3 /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 177630681F5759AA002FB1F3 /* NetAssociation.m */; };
+		177630711F575F40002FB1F3 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 177630661F5759AA002FB1F3 /* AsyncUdpSocket.m */; };
 		17A61FA21F55F2CF007DD398 /* 87035_1332467-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */; };
 		17A61FA31F55F2CF007DD398 /* 123094_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */; };
 		17A61FA41F55F2CF007DD398 /* 123096_103319-lq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */; };
@@ -44,6 +48,15 @@
 /* Begin PBXFileReference section */
 		177630611F5734D7002FB1F3 /* AudioEffectDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AudioEffectDemo.entitlements; sourceTree = "<group>"; };
 		177630621F5734D7002FB1F3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		177630651F5759AA002FB1F3 /* NetworkClock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkClock.h; sourceTree = "<group>"; };
+		177630661F5759AA002FB1F3 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		177630671F5759AA002FB1F3 /* NetAssociation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
+		177630681F5759AA002FB1F3 /* NetAssociation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetAssociation.m; sourceTree = "<group>"; };
+		177630691F5759AA002FB1F3 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		1776306A1F5759AA002FB1F3 /* NetworkClock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkClock.m; sourceTree = "<group>"; };
+		1776306B1F575A3F002FB1F3 /* BRAudioSyncConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAudioSyncConstants.h; sourceTree = "<group>"; };
+		1776306C1F575A40002FB1F3 /* BRAudioSyncConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAudioSyncConstants.m; sourceTree = "<group>"; };
+		1776306F1F575EEA002FB1F3 /* MultipeerNTP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipeerNTP.h; sourceTree = "<group>"; };
 		17A61F9C1F55F2CF007DD398 /* 87035_1332467-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "87035_1332467-lq.mp3"; sourceTree = "<group>"; };
 		17A61F9D1F55F2CF007DD398 /* 123094_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123094_103319-lq.mp3"; sourceTree = "<group>"; };
 		17A61F9E1F55F2CF007DD398 /* 123096_103319-lq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "123096_103319-lq.mp3"; sourceTree = "<group>"; };
@@ -122,6 +135,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		177630641F5759AA002FB1F3 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				1776306F1F575EEA002FB1F3 /* MultipeerNTP.h */,
+				1776306B1F575A3F002FB1F3 /* BRAudioSyncConstants.h */,
+				1776306C1F575A40002FB1F3 /* BRAudioSyncConstants.m */,
+				177630651F5759AA002FB1F3 /* NetworkClock.h */,
+				177630661F5759AA002FB1F3 /* AsyncUdpSocket.m */,
+				177630671F5759AA002FB1F3 /* NetAssociation.h */,
+				177630681F5759AA002FB1F3 /* NetAssociation.m */,
+				177630691F5759AA002FB1F3 /* AsyncUdpSocket.h */,
+				1776306A1F5759AA002FB1F3 /* NetworkClock.m */,
+			);
+			path = 3rdParty;
+			sourceTree = SOURCE_ROOT;
+		};
 		17A6201E1F55FB54007DD398 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +228,7 @@
 		E868644C1D75B5E400DE35C6 /* AudioEffectDemo */ = {
 			isa = PBXGroup;
 			children = (
+				177630641F5759AA002FB1F3 /* 3rdParty */,
 				177630611F5734D7002FB1F3 /* AudioEffectDemo.entitlements */,
 				17A620411F560454007DD398 /* Red Hot Chilli Peppers DANI CALIFORNIA [MULTITRACKS] */,
 				17A6201E1F55FB54007DD398 /* Sounds */,
@@ -403,11 +433,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1776306E1F575E60002FB1F3 /* NetworkClock.m in Sources */,
 				17A61FF91F55F46D007DD398 /* TPOscilloscopeLayer.m in Sources */,
+				1776306D1F575E53002FB1F3 /* BRAudioSyncConstants.m in Sources */,
+				177630711F575F40002FB1F3 /* AsyncUdpSocket.m in Sources */,
 				E86864551D75B5E400DE35C6 /* ViewController.m in Sources */,
 				17A61FFC1F55F5B0007DD398 /* CellData.m in Sources */,
 				E86864521D75B5E400DE35C6 /* AppDelegate.m in Sources */,
 				E868644F1D75B5E400DE35C6 /* main.m in Sources */,
+				177630701F575F16002FB1F3 /* NetAssociation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

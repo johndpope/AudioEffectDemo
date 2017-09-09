@@ -8,6 +8,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import <BlocksKit/UIControl+BlocksKit.h>
 #import <BlocksKit/BlocksKit.h>
+#import "BRAudioSyncConstants.h"
+#import "NetworkClock.h"
+
 @import DotzuObjc;
 @import TheAmazingAudioEngine;
 
@@ -120,10 +123,13 @@ static const int kInputChannelsChangedContext;
     
     [_audioController addObserver:self forKeyPath:@"numberOfInputChannels" options:0 context:(void*)&kInputChannelsChangedContext];
     
+    [self addObservers];
     
     return self;
 }
-
+-(void)test{
+    [self sendMessage:kMessageCommandTime withNetworkTime:[[NetworkClock sharedInstance] networkTime]];
+}
 - (NSString *)getUUID {
     NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uniqueID"];
     if (!UUID) {
@@ -539,27 +545,7 @@ static const int kInputChannelsChangedContext;
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)anyMesh:(AnyMesh *)anyMesh receivedMessage:(MeshMessage *)message {
-    LogVerbose(@"receivedMessage:%@", message.data[@"msg"]);
-    
-    NSString *url = message.data[@"url"];
-    NSString *filename = [url lastPathComponent];
-    for (AEAudioFilePlayer *loop in loops) {
-        if ([[loop.url.absoluteString lastPathComponent] isEqualToString:filename]) {
-            loop.channelIsMuted = YES;
-            //  [loop setCurrentTime:0];
-        }
-    }
-    
-    if ([message.data[@"msg"] isEqualToString:@"start"]) {
-       // [self start];
-    }
-    if ([message.data[@"msg"] isEqualToString:@"stop"]) {
-        [self stopAllLoops];
-    }
-    
-    [self.tableView reloadData];
-}
+
 
 - (void)stopBroadcastToPeers {
     [self stopAllLoops];
@@ -573,6 +559,8 @@ static const int kInputChannelsChangedContext;
         [anymesh publishToTarget:peer withData:@{ @"msg":@"stop" }];
     }
 }
+
+
 
 - (void)broadcastToPeers:(AEAudioFilePlayer *)loop sender:(UIControl *)sender {
     LogVerbose(@"requestToTarget");
@@ -862,4 +850,124 @@ static inline float translate(float val, float min, float max) {
     }
 }
 
+
+
+
+- (void) messageNotificationReceived: (NSNotification *) notification
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *messageDictionary = [notification.userInfo objectForKey:kNotificationMessageDictKey];
+        NSDate *receivedDate = [notification.userInfo objectForKey:kNotificationMessageTimeKey];
+        NSDate *receivedNTPDate = [notification.userInfo objectForKey:kNotificationMessageNTPTimeKey];
+        
+        NSTimeInterval remoteTime = [[messageDictionary objectForKey:kMessageDeviceTimeKey] doubleValue];
+        NSDate *remoteDeviceTime = [NSDate dateWithTimeIntervalSince1970:remoteTime];
+        
+        NSTimeInterval remoteNTPTime = [[messageDictionary objectForKey:kMessageNetworkTimeKey] doubleValue];
+        NSDate *remoteNTPDate = [NSDate dateWithTimeIntervalSince1970:remoteNTPTime];
+        
+        NSLog(@"Received message at: %@", receivedDate);
+        
+        NSString *remoteMessage = [messageDictionary objectForKey:kMessageCommandKey];
+        
+        if ([remoteMessage isEqualToString:kMessageCommandTime])
+        {
+            NSTimeInterval deviceTimeDifference = [remoteDeviceTime timeIntervalSinceDate:receivedDate];
+            NSTimeInterval ntpTimeDifference = [remoteNTPDate timeIntervalSinceDate:receivedNTPDate];
+            LogInfo(@"%@", [NSString stringWithFormat:@"Device-Device Delay: %5.3f", deviceTimeDifference]);
+            LogInfo(@"%@", [NSString stringWithFormat:@"Device-Device Network Delay: %5.3f", ntpTimeDifference]);
+            
+        }
+        else if ([remoteMessage isEqualToString:kMessageCommandStart])
+        {
+            
+        }
+        else if ([remoteMessage isEqualToString:kMessageCommandStop])
+        {
+            
+        }
+    });
+}
+
+- (void) addObservers
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageNotificationReceived:) name:kNotificationMessageReceived object:nil];
+}
+
+- (void) removeObservers
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationMessageReceived object:nil];
+}
+
+
+// Received data from remote peer
+
+- (void)anyMesh:(AnyMesh *)anyMesh receivedMessage:(MeshMessage *)message {
+    LogVerbose(@"receivedMessage:%@", message.data[@"msg"]);
+    
+    
+    NSString *url = message.data[@"url"];
+    NSString *filename = [url lastPathComponent];
+    for (AEAudioFilePlayer *loop in loops) {
+        if ([[loop.url.absoluteString lastPathComponent] isEqualToString:filename]) {
+            loop.channelIsMuted = YES;
+        }
+    }
+    
+    if ([message.data[@"msg"] isEqualToString:@"start"]) {
+        // [self start];
+    }
+    if ([message.data[@"msg"] isEqualToString:@"stop"]) {
+        [self stopAllLoops];
+    }
+    
+    [self.tableView reloadData];
+    
+    NSDate *receivingTime = [NSDate date];
+    NSDate *receivingNTPTime = [[NetworkClock sharedInstance] networkTime];
+    NSError *error = nil;
+    
+    
+    if (error == nil)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMessageReceived
+                                                            object:nil
+                                                          userInfo:@{kNotificationMessageDictKey :  message.data[@"msg"],
+                                                                     kNotificationMessageTimeKey : receivingTime,
+                                                                     kNotificationMessageNTPTimeKey: receivingNTPTime}];
+    }
+    else
+    {
+        NSLog(@"Error parsing json: %@", error.description);
+    }
+}
+
+- (void)sendMessage: (NSString *) message
+    withNetworkTime: (NSDate *) networkTime
+{
+    NSDictionary *messageDictionary = @{kMessageNetworkTimeKey: [NSNumber numberWithDouble:[networkTime timeIntervalSince1970]],
+                                        kMessageDeviceTimeKey:  [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]],
+                                        kMessageCommandKey:     message};
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:messageDictionary options:NSJSONWritingPrettyPrinted error:&error];
+    
+    if (error == nil)
+    {
+        
+//        if (![self sendData:jsonData
+//                        toPeers:_connectedPeers
+//                       withMode:MCSessionSendDataReliable
+//                          error:&error])
+//        {
+//            NSLog(@"%@ message sending error: %@", message, error.description);
+//        }
+    }
+    else
+    {
+        NSLog(@"JSON error: %@", error.description);
+    }
+}
+
 @end
+
+
